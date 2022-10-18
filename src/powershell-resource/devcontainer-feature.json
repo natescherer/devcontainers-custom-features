@@ -1,0 +1,19 @@
+{
+    "name": "PowerShell Resource",
+    "id": "powershell-resource",
+    "version": "0.1.0",
+    "description": "A feature to install PowerShell resources (modules and scripts) via PowerShellGet 3.0 Prerelease for all users on a devcontainer.",
+    "options": {
+        "requiredResource": {
+            "type": "string",
+            "description": "A JSON string defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this string."
+        },
+        "requiredResourceFile": {
+            "type": "string",
+            "description": "Path to a JSON file inside the container defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/powershell"
+    ]
+}
