@@ -1,0 +1,14 @@
+{
+    "module_via_requiredresource": {
+        "features": {
+            "ghcr.io/devcontainers/features/powershell:1": {
+                "version": "latest"
+            },
+            "powershell-resource": {
+                "requiredResource": {
+                    "ChangelogManagement": {}
+                }
+            }
+        }
+    }
+}
