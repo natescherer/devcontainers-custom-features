@@ -20,16 +20,5 @@
                 "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
             }
         }
-    },
-    "powershell-resource_module_via_requiredresource-alpine": {
-        "image": "mcr.microsoft.com/devcontainers/base:alpine",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resource": {
-                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
-            }
-        }
     }
 }
