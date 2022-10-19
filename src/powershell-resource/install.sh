@@ -10,12 +10,12 @@ else
     exit 127
 fi
 
-if ! "$REQUIREDRESOURCEBASE64" = "" && ! "$REQUIREDRESOURCEFILE" = ""; then
+if !["$REQUIREDRESOURCEBASE64" -eq ""] && !["$REQUIREDRESOURCEFILE" -eq ""]; then
     echo "You cannot specify both requiredResource and requiredResourceFile for this feature."
     exit 1
 fi
 
-if "$REQUIREDRESOUCEBASE64" = "" && "$REQUIREDRESOURCEFILE" = ""; then
+if ["$REQUIREDRESOURCEBASE64" -eq ""] && ["$REQUIREDRESOURCEFILE" -eq ""]; then
     echo "Either requiredResource or requiredResourceFile must be specified for this feature."
     exit 1
 fi
