@@ -6,7 +6,7 @@
     "options": {
         "requiredResource": {
             "type": "string",
-            "description": "Stringified JSON defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://onlinejsontools.com/stringify-json to stringify."
+            "description": "Stringified JSON defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://w3percentagecalculator.com/json-to-string/ to stringify without newlines."
         },
         "requiredResourceFile": {
             "type": "string",
