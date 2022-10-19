@@ -6,9 +6,7 @@
                 "version": "latest"
             },
             "powershell-resource": {
-                "requiredResource": {
-                    "ChangelogManagement": {}
-                }
+                "requiredResource": "{\n  \"ChangelogManagement\": {}\n}"
             }
         }
     },
@@ -19,9 +17,7 @@
                 "version": "latest"
             },
             "powershell-resource": {
-                "requiredResource": {
-                    "ChangelogManagement": {}
-                }
+                "requiredResource": "{\n  \"ChangelogManagement\": {}\n}"
             }
         }
     },
@@ -32,9 +28,7 @@
                 "version": "latest"
             },
             "powershell-resource": {
-                "requiredResource": {
-                    "ChangelogManagement": {}
-                }
+                "requiredResource": "{\n  \"ChangelogManagement\": {}\n}"
             }
         }
     }
