@@ -2,7 +2,7 @@
     "powershell-resource_module_via_requiredresource-debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
-            "ghcr.io/devcontainers/features/powershell:1": {
+            "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resource": {
@@ -13,7 +13,7 @@
     "powershell-resource_module_via_requiredresource-ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
-            "ghcr.io/devcontainers/features/powershell:1": {
+            "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resource": {
@@ -24,7 +24,7 @@
     "powershell-resource_module_via_requiredresource-alpine": {
         "image": "mcr.microsoft.com/devcontainers/base:alpine",
         "features": {
-            "ghcr.io/devcontainers/features/powershell:1": {
+            "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resource": {
