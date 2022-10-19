@@ -1,5 +1,5 @@
 {
-    "module_via_requiredresource-debian": {
+    "powershell-resource_module_via_requiredresource-debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell:1": {
@@ -10,7 +10,7 @@
             }
         }
     },
-    "module_via_requiredresource-ubuntu": {
+    "powershell-resource_module_via_requiredresource-ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell:1": {
@@ -21,7 +21,7 @@
             }
         }
     },
-    "module_via_requiredresource-alpine": {
+    "powershell-resource_module_via_requiredresource-alpine": {
         "image": "mcr.microsoft.com/devcontainers/base:alpine",
         "features": {
             "ghcr.io/devcontainers/features/powershell:1": {
