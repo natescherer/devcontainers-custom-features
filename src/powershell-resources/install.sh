@@ -3,9 +3,7 @@ set -e
 
 echo "Feature 'powershell-resources' starting..."
 
-if command -v pwsh > /dev/null; then
-    echo "Confirmed PowerShell is installed"
-else
+if ! command -v pwsh > /dev/null; then
     echo "PowerShell is not installed. Please ensure it is installed before using this feature."
     exit 127
 fi
