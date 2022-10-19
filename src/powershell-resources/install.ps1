@@ -5,12 +5,11 @@ Install-Module -Name PowerShellGet -Force -AllowClobber -Scope AllUsers
 Install-Module -Name PowerShellGet -Force -AllowPrerelease -Scope AllUsers
 
 if ($env:REQUIREDRESOURCEBASE64) {
-    $ResourceJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:REQUIREDRESOURCE))
+    $ResourceJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:REQUIREDRESOURCEBASE64))
 }
 if ($env:REQUIREDRESOURCEFILE) {
     $ResourceJson = Get-Content $env:REQUIREDRESOURCEFILE -Raw
 }
 
 Write-Host -Object "Installing Resource(s)..."
-Write-Host $ResourceJson
 Install-PSResource -RequiredResource $ResourceJson -AcceptLicense -TrustRepository -Scope AllUsers -Verbose
