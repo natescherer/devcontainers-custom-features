@@ -12,4 +12,5 @@ if ($env:REQUIREDRESOURCEFILE) {
 }
 
 Write-Host -Object "Installing Resource(s)..."
+Write-Host $ResourceJson
 Install-PSResource -RequiredResource $ResourceJson -AcceptLicense -TrustRepository -Scope AllUsers -Verbose

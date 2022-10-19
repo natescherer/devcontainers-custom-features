@@ -3,7 +3,7 @@
 set -e
 source dev-container-features-test-lib
 
-pwsh -c 'Get-PSResource -Scope AllUsers | fl'
+pwsh -c 'Get-PSResource -Scope AllUsers'
 check "ChangelogManagement Latest" pwsh -c 'Get-PSResource -Scope AllUsers -Name ChangelogMangement' | grep 'ChangelogManagement'
 
 reportResults
