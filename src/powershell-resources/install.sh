@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "Feature 'powershell-resource' starting..."
+echo "Feature 'powershell-resources' starting..."
 
 if command -v pwsh > /dev/null; then
     echo "Confirmed PowerShell is installed"
