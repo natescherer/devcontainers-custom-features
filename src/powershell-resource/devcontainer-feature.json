@@ -4,9 +4,9 @@
     "version": "0.1.0",
     "description": "A feature to install PowerShell resources (modules and scripts) via PowerShellGet 3.0 Prerelease for all users on a devcontainer.",
     "options": {
-        "requiredResource": {
+        "requiredResourceBase64": {
             "type": "string",
-            "description": "Stringified JSON defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://w3percentagecalculator.com/json-to-string/ to stringify without newlines."
+            "description": "Base64-encoded JSON defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode"
         },
         "requiredResourceFile": {
             "type": "string",
