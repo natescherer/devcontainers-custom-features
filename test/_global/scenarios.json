@@ -6,7 +6,7 @@
                 "version": "latest"
             },
             "powershell-resource": {
-                "requiredResource": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
             }
         }
     },
@@ -17,7 +17,7 @@
                 "version": "latest"
             },
             "powershell-resource": {
-                "requiredResource": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
             }
         }
     },
@@ -28,7 +28,7 @@
                 "version": "latest"
             },
             "powershell-resource": {
-                "requiredResource": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
             }
         }
     }
