@@ -1,6 +1,6 @@
 {
-    "name": "PowerShell Resource",
-    "id": "powershell-resource",
+    "name": "PowerShell Resources",
+    "id": "powershell-resources",
     "version": "0.1.0",
     "description": "A feature to install PowerShell resources (modules and scripts) via PowerShellGet 3.0 Prerelease for all users on a devcontainer.",
     "options": {
