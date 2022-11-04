@@ -1,22 +1,14 @@
 
 # PowerShell Resources (powershell-resources)
 
-A feature to install PowerShell resources (modules and scripts) via PowerShellGet 3.0 Prerelease for all users on a devcontainer.
+A feature to install PowerShell resources (modules and scripts) from the PowerShell Gallery for all users on a devcontainer.
 
 ## Example Usage
 
 ```json
 "features": {
     "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {
-        "resources": "ModuleOne,ScriptTwo"
-    }
-}
-```
-
-```json
-"features": {
-    "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {
-        "requiredResourceJsonFile": "/opt/devcontainer/PwshResources.json"
+        "version": "latest"
     }
 }
 ```
@@ -25,10 +17,15 @@ A feature to install PowerShell resources (modules and scripts) via PowerShellGe
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| requiredResourceBase64 | Base64-encoded JSON defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode | string | - |
-| requiredResourceFile | Path to a JSON file inside the container defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file. | string | - |
+| resources | A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install. | string | undefined |
+| requiredResourceJsonBase64 | Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode. | string | undefined |
+| requiredResourceJsonFile | Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file. | string | undefined |
 
-## Why `requiredResourceBase64` is a Base64 string
+## Need to Install Specific Resource Versions?
+
+Use `requiredResourceJsonBase64` or `requiredResourceJsonFile`; the RequiredResource spec allows defining specific package versions.
+
+## Why `requiredResourceJsonBase64` is a Base64 string
 
 Features are bash scripts at heart, and bash has a bad time handling JSON in environment variables, which are how inputs are passed to features. Base64-encoding ended up being the simplest, most easily reversible way to encode the data, though use of requiredResourceFile is probably a better option.
 
