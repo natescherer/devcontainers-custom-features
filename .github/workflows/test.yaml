@@ -18,11 +18,21 @@ jobs:
   publish:
     needs: test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: pwsh
     steps:
       - uses: actions/checkout@v3
-      - name: Install latest devcontainer CLI
+      - name: Install devcontainer CLI
         run: npm install -g @devcontainers/cli
+      - name: Install Cloudsmith CLI
+        run: pip install --upgrade cloudsmith-cli
       - name: Publish to Cloudsmith
-        run: devcontainer features publish src -r docker.cloudsmith.io -n ${{ github.repository }}
+        run: |
+          devcontainer features package src
+          $Tarballs = Get-ChildItem -Path "output" -Filter "*.tgz"
+          foreach ($Tarball in $Tarballs) {
+            cloudsmith push raw ${{ github.repository }} $($Tarball.FullName)
+          }
         env:
-          DEVCONTAINERS_OCI_AUTH: docker.cloudsmith.io:${{ secrets.CLOUDSMITH_KEY }}
+          CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_KEY }}
