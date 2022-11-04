@@ -3,15 +3,30 @@ on:
   push:
     branches:
       - main
+      - bugfix/**
+      - feature/**
   workflow_dispatch:
-
 jobs:
   test:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
       - name: Install latest devcontainer CLI
         run: npm install -g @devcontainers/cli
       - name: Run global tests
         run: devcontainer features test --global-scenarios-only .
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install latest devcontainer CLI
+        run: npm install -g @devcontainers/cli
+      - name: Login to Cloudsmith
+        uses: docker/login-action@v2
+        with:
+          registry: docker.cloudsmith.io
+          username: nate-scherer
+          password: ${{ secrets.CLOUDSMITH_KEY }}
+      - name: Publish to Cloudsmith
+        run: devcontainer features publish src -r docker.cloudsmith.io -n ${{ github.repository }}
