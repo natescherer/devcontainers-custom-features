@@ -4,8 +4,8 @@ Install-Module -Name PowerShellGet -Force -AllowClobber -Scope AllUsers
 # Installing PowerShellGet 3 Prerelease
 Install-Module -Name PowerShellGet -RequiredVersion 3.0.17-beta17 -Force -AllowPrerelease -Scope AllUsers
 
-if ($env:RESOURCE) {
-    $Resource = $env:RESOURCE.split(",")
+if ($env:RESOURCES) {
+    $Resource = $env:RESOURCES.split(",")
 }
 if ($env:REQUIREDRESOURCEJSONBASE64) {
     $ResourceJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:REQUIREDRESOURCEJSONBASE64))

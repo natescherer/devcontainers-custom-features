@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "description": "A feature to install PowerShell resources (modules and scripts) from the PowerShell Gallery for all users on a devcontainer.",
     "options": {
-        "resource": {
+        "resources": {
             "type": "string",
             "description": "A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install."
         },

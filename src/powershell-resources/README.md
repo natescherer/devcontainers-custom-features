@@ -8,6 +8,14 @@ A feature to install PowerShell resources (modules and scripts) via PowerShellGe
 ```json
 "features": {
     "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {
+        "resources": "ModuleOne,ScriptTwo"
+    }
+}
+```
+
+```json
+"features": {
+    "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {
         "requiredResourceJsonFile": "/opt/devcontainer/PwshResources.json"
     }
 }

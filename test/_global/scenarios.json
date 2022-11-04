@@ -65,25 +65,25 @@
             }
         }
     },
-    "powershell-resources_resource_debian": {
+    "powershell-resources_resources_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resources": {
-                "resource": "ChangelogManagement,PoshEmail"
+                "resources": "ChangelogManagement,PoshEmail"
             }
         }
     },
-    "powershell-resources_resource_ubuntu": {
+    "powershell-resources_resources_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resources": {
-                "resource": "ChangelogManagement,PoshEmail"
+                "resources": "ChangelogManagement,PoshEmail"
             }
         }
     }
