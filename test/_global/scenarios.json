@@ -1,45 +1,45 @@
 {
-    "powershell-resources_module_via_requiredresourcebase64_debian": {
+    "powershell-resources_module_via_requiredresourcejsonbase64_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resources": {
-                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
             }
         }
     },
-    "powershell-resources_module_via_requiredresourcebase64_ubuntu": {
+    "powershell-resources_module_via_requiredresourcejsonbase64_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resources": {
-                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
             }
         }
     },
-    "powershell-resources_script_via_requiredresourcebase64_debian": {
+    "powershell-resources_script_via_requiredresourcejsonbase64_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resources": {
-                "requiredResourceBase64": "ewogICAgIk5ldy1PblByZW1pc2VIeWJyaWRXb3JrZXIiOiB7fQp9"
+                "requiredResourceJsonBase64": "ewogICAgIk5ldy1PblByZW1pc2VIeWJyaWRXb3JrZXIiOiB7fQp9"
             }
         }
     },
-    "powershell-resources_script_via_requiredresourcebase64_ubuntu": {
+    "powershell-resources_script_via_requiredresourcejsonbase64_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
             "powershell-resources": {
-                "requiredResourceBase64": "ewogICAgIk5ldy1PblByZW1pc2VIeWJyaWRXb3JrZXIiOiB7fQp9"
+                "requiredResourceJsonBase64": "ewogICAgIk5ldy1PblByZW1pc2VIeWJyaWRXb3JrZXIiOiB7fQp9"
             }
         }
     },
@@ -50,7 +50,7 @@
                 "version": "latest"
             },
             "powershell-resources": {
-                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
+                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
             }
         }
     },
@@ -61,7 +61,29 @@
                 "version": "latest"
             },
             "powershell-resources": {
-                "requiredResourceBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
+                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
+            }
+        }
+    },
+    "powershell-resources_resource_debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "ghcr.io/devcontainers/features/powershell": {
+                "version": "latest"
+            },
+            "powershell-resources": {
+                "resource": "ChangelogManagement,PoshEmail"
+            }
+        }
+    },
+    "powershell-resources_resource_ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/powershell": {
+                "version": "latest"
+            },
+            "powershell-resources": {
+                "resource": "ChangelogManagement,PoshEmail"
             }
         }
     }

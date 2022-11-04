@@ -8,13 +8,23 @@ if ! command -v pwsh > /dev/null; then
     exit 127
 fi
 
-if [ "$REQUIREDRESOURCEBASE64" != "" ] && [ "$REQUIREDRESOURCEFILE" != "" ]; then
-    echo "You cannot specify both requiredResourceBase64 and requiredResourceFile for this feature."
+if [ "$REQUIREDRESOURCEJSONBASE64" != "" ] && [ "$REQUIREDRESOURCEJSONFILE" != "" ]; then
+    echo "You cannot specify both requiredResourceJsonBase64 and requiredResourceJsonFile for this feature."
     exit 1
 fi
 
-if [ -z "$REQUIREDRESOURCEBASE64" ] && [ -z "$REQUIREDRESOURCEFILE" ]; then
-    echo "Either requiredResourceBase64 or requiredResourceFile must be specified for this feature."
+if [ "$RESOURCE" != "" ] && [ "$REQUIREDRESOURCEJSONFILE" != "" ]; then
+    echo "You cannot specify both resource and requiredResourceJsonFile for this feature."
+    exit 1
+fi
+
+if [ "$REQUIREDRESOURCEJSONBASE64" != "" ] && [ "$RESOURCE" != "" ]; then
+    echo "You cannot specify both requiredResourceJsonBase64 and resource for this feature."
+    exit 1
+fi
+
+if [ -z "$RESOURCE" ] && [ -z "$REQUIREDRESOURCEJSONBASE64" ] && [ -z "$REQUIREDRESOURCEJSONFILE" ]; then
+    echo "An input must be specified for this feature."
     exit 1
 fi
 
