@@ -1,16 +1,20 @@
 {
     "name": "PowerShell Resources",
     "id": "powershell-resources",
-    "version": "0.1.0",
-    "description": "A feature to install PowerShell resources (modules and scripts) via PowerShellGet 3.0 Prerelease for all users on a devcontainer.",
+    "version": "1.0.0",
+    "description": "A feature to install PowerShell resources (modules and scripts) from the PowerShell Gallery for all users on a devcontainer.",
     "options": {
-        "requiredResourceBase64": {
+        "resources": {
             "type": "string",
-            "description": "Base64-encoded JSON defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode"
+            "description": "A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install."
         },
-        "requiredResourceFile": {
+        "requiredResourceJsonBase64": {
             "type": "string",
-            "description": "Path to a JSON file inside the container defining one or more resources to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
+            "description": "Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode."
+        },
+        "requiredResourceJsonFile": {
+            "type": "string",
+            "description": "Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
         }
     },
     "installsAfter": [
