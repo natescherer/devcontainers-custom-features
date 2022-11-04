@@ -7,11 +7,11 @@ Install-Module -Name PowerShellGet -RequiredVersion 3.0.17-beta17 -Force -AllowP
 if ($env:RESOURCE) {
     $Resource = $env:RESOURCE.split(",")
 }
-if ($env:REQUIREDRESOURCEBASE64) {
-    $ResourceJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:REQUIREDRESOURCEBASE64))
+if ($env:REQUIREDRESOURCEJSONBASE64) {
+    $ResourceJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:REQUIREDRESOURCEJSONBASE64))
 }
-if ($env:REQUIREDRESOURCEFILE) {
-    $ResourceJson = Get-Content $env:REQUIREDRESOURCEFILE -Raw
+if ($env:REQUIREDRESOURCEJSONFILE) {
+    $ResourceJson = Get-Content $env:REQUIREDRESOURCEJSONFILE -Raw
 }
 
 Write-Host -Object "Installing Resource(s)..."
