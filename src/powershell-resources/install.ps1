@@ -11,7 +11,9 @@ if ($env:REQUIREDRESOURCEJSONBASE64) {
     $ResourceJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:REQUIREDRESOURCEJSONBASE64))
 }
 if ($env:REQUIREDRESOURCEJSONFILE) {
+    Write-Host "File Mode"
     $ResourceJson = Get-Content $env:REQUIREDRESOURCEJSONFILE -Raw
+    Write-Host $ResourceJson
 }
 
 Write-Host -Object "Installing Resource(s)..."
