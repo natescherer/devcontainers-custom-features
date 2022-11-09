@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+repo="derailed/k9s"
+filenameTemplate="k9s_Linux_ARCH.tar.gz"
+binaryName="k9s"
+
 find_github_release_asset_url() {
     local repo=$1
     local filenameTemplate=$2
@@ -28,18 +32,18 @@ download_and_install_gzipped_tarball() {
     local destFolder=$2
     local binaryName=$3
 
-    local installTempPath=/tmp/ghinstall
+    local installTempPath=/tmp/$binaryName
     local tarballName=$(echo "$url" | rev | cut -d'/' -f1 | rev)
 
     echo "Installing $url to $destFolder..."
 
-    mkdir -p "$installTempPath" "/opt/$binaryName"
+    mkdir -p "$installTempPath" "$destFolder"
     curl -sSL -o "$installTempPath/$tarballName" "$url"
     tar xf "$installTempPath/$tarballName" -C "$destFolder"
     ln -s "$destFolder/$binaryName" "/usr/local/bin/$binaryName"
     rm -rf "$installTempPath"
 }
 
-ghUrl="$(find_github_release_asset_url derailed/k9s k9s_Linux_ARCH.tar.gz $VERSION)"
+ghUrl="$(find_github_release_asset_url $repo $filenameTemplate $VERSION)"
 
-download_and_install_gzipped_tarball $ghUrl /opt/k9s k9s
+download_and_install_gzipped_tarball $ghUrl /opt/$binaryName $binaryName
