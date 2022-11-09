@@ -11,18 +11,18 @@ find_github_release_asset_url() {
     local version=$3
     local versionPrefix=${4:-"v"}
 
-    if [ "${version}" = "latest" ]; then
+    if [ "$version" = "latest" ]; then
         local releaseUrl="https://api.github.com/repos/${repo}/releases/latest"
     else
         local releaseUrl="https://api.github.com/repos/${repo}/releases/tags/${versionPrefix}${version}"
     fi
-    arch="$(dpkg --print-architecture)"
-    if [ "${arch}" = "amd64" ]; then
-        arch="(amd64|x64|x86_64)"
+    archRegex="$(dpkg --print-architecture)"
+    if [ "$archRegex" = "amd64" ]; then
+        archRegex="(amd64|x64|x86_64)"
     fi
 
-    local filename=$(echo "$filenameTemplate" | sed "s/VERSION/$version/" | sed "s/ARCH/$arch/")
-    local downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s ${releaseUrl} | jq -r -c ".assets[] | select(.name|test(\"${filename}\")) | .browser_download_url")
+    local filenameRegex=$(echo "$filenameTemplate" | sed "s/VERSION/$version/" | sed "s/ARCH/$arch/")
+    local downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s ${releaseUrl} | jq -r -c ".assets[] | select(.name|test(\"$filenameRegex\")) | .browser_download_url")
 
     echo $downloadUrl
 }
