@@ -8,7 +8,9 @@ find_github_release_asset_url() {
     local versionPrefix=${4:-"v"}
 
     if [ "${version}" = "latest" ]; then
-        version=$(find_latest_version_from_git_tags https://github.com/${repo})
+        local releaseUrl="https://api.github.com/repos/${repo}/releases/latest"
+    else
+        local releaseUrl="https://api.github.com/repos/${repo}/releases/tags/${versionPrefix}${version}"
     fi
     arch="$(dpkg --print-architecture)"
     if [ "${arch}" = "amd64" ]; then
@@ -17,29 +19,9 @@ find_github_release_asset_url() {
 
     local filename=${filenameTemplate/VERSION/"${version}"}
     filename=${filename/ARCH/"${arch}"}
-    local downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s https://api.github.com/repos/${repo}/releases/tags/${versionPrefix}${version} | jq -r -c ".assets[] | select(.name|test(\"${filename}\")) | .browser_download_url")
+    local downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s ${releaseUrl} | jq -r -c ".assets[] | select(.name|test(\"${filename}\")) | .browser_download_url")
 
     echo $downloadUrl
-}
-
-find_latest_version_from_git_tags() {
-    local repoUrl=$1
-    local versionPrefix=${2:-"tags/v"}
-    local separator=${3:-"."}
-    local last_part_optional=${4:-"false"}
-
-    local escaped_separator=${separator//./\\.}
-    local last_part
-    if [ "$last_part_optional" = "true" ]; then
-        last_part="($escaped_separator[0-9]+)?"
-    else
-        last_part="$escaped_separator[0-9]+"
-    fi
-    local regex="$versionPrefix\\K[0-9]+$escaped_separator[0-9]+$last_part$"
-    local version_list="$(git ls-remote --tags $repoUrl | grep -oP "$regex" | tr -d ' ' | tr "$separator" "." | sort -rV)"
-
-    latestVersion="$(echo "$version_list" | head -n 1)"
-    echo $latestVersion
 }
 
 download_and_install_gzipped_tarball() {
