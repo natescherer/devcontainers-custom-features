@@ -9,6 +9,8 @@ This repository contains a collection of features for [Development Containers](h
 
 ### [PowerShell Resources](src/powershell-resources/README.md)
 
+### [k9s](src/k9s/README.md)
+
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
