@@ -17,8 +17,7 @@ find_github_release_asset_url() {
         arch="(amd64|x64|x86_64)"
     fi
 
-    local filename=$(echo "$filenameTemplate" | sed "s/VERSION/$version/")
-    filename=${filename/ARCH/"${arch}"}
+    local filename=$(echo "$filenameTemplate" | sed "s/VERSION/$version/" | sed "s/ARCH/$arch/")
     local downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s ${releaseUrl} | jq -r -c ".assets[] | select(.name|test(\"${filename}\")) | .browser_download_url")
 
     echo $downloadUrl
