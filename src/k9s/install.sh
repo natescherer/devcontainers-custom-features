@@ -44,7 +44,12 @@ download_and_install_gzipped_tarball() {
     rm -rf "$installTempPath"
 }
 
-ghUrl=$(find_github_release_asset_url $repo $filenameTemplate $VERSION)
+echo "repo=${repo}"
+echo "filenameTemplate=${filenameTemplate}"
+echo "VERSION=${VERSION}"
 
-echo "$ghUrl"
+ghUrl=$(find_github_release_asset_url "$repo" "$filenameTemplate" "$VERSION")
+
+echo "ghUrl=${ghUrl}"
+
 download_and_install_gzipped_tarball "$ghUrl" "/opt/${binaryName}" $binaryName
