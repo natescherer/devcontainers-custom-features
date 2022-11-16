@@ -37,7 +37,7 @@ jobs:
               $VersionOverridden = $false
               if (Test-Path -Path $NextVersionPath) {
                 $NextVersionFromFile = Get-Content -Path $NextVersionPath -Raw
-                if ([SemanticVersion]$NextVersionFromFile -gt [SemanticVersion]$CurrentVersion) {
+                if ([System.Management.Automation.SemanticVersion]$NextVersionFromFile -gt [System.Management.Automation.SemanticVersion]$CurrentVersion) {
                   Write-Host "NEXTVERSION file contains a valid override value of $NextVersionFromFile"
                   $NextVersion = $NextVersionFromFile
                   $VersionOverridden = $true
