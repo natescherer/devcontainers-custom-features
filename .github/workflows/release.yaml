@@ -8,16 +8,64 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: "Publish Features"
+      - name: Update Version Numbers for Features with Changes
+        run: |
+          Install-Module ChangelogManagement -Force
+          Install-Module BuildHelpers -Force
+
+          $Changelogs = Get-ChildItem -Path $env:GITHUB_WORKSPACE -Filter "CHANGELOG.md" -Recurse
+          Write-Host $Changelogs
+
+          foreach ($Changelog in $Changelogs) {
+            $Data = Get-ChangelogData -Path $Changelog.FullName
+            if ($Data.Unreleased.RawData) {
+              $BasePath = Split-Path -Path $Changelog.FullName -Parent
+              $JsonPath = Join-Path $BasePath "devcontainer-feature.json"
+              $NextVersionPath = Join-Path $BasePath "NEXTVERSION"
+              $JsonData = Get-Content -Path $JsonPath -Raw | ConvertFrom-Json -Depth 100
+              $CurrentVersion = $JsonData.version
+
+              Write-Host "'$JsonPath' needs updated for release..."
+              Write-Host "Current Version for '$JsonPath' is $CurrentVersion"
+              Write-Host ""
+
+              $VersionOverridden = $false
+              if (Test-Path -Path $NextVersionPath) {
+                $NextVersionFromFile = Get-Content -Path $NextVersionPath -Raw
+                if ([System.Management.Automation.SemanticVersion]$NextVersionFromFile -gt [System.Management.Automation.SemanticVersion]$CurrentVersion) {
+                  Write-Host "NEXTVERSION file contains a valid override value of $NextVersionFromFile"
+                  $NextVersion = $NextVersionFromFile
+                  $VersionOverridden = $true
+                } else {
+                  Write-Host "NEXTVERSION file version $NextVersionFromFile is older than current version $CurrentVersion. Ignoring."
+                }
+              }
+              if ($VersionOverridden -eq $false) {
+                $NextVersion = Step-Version -Version $CurrentVersion -By Patch
+              }
+
+              Write-Host "New Version for '$Jsonpath' is $NextVersion"
+              Write-Host ""
+
+              Write-Host "Updating Version in '$JsonPath"
+              $JsonData.version = $NextVersion
+              $JsonData | ConvertTo-Json -Depth 100 | Out-File $JsonPath -NoNewline
+              Write-Host ""
+
+              Write-Host "Updating Changelog '$($Changelog.FullName)'..."
+              Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode GitHub
+            }
+          }
+      - name: Publish Features
         uses: devcontainers/action@v1
         with:
-          publish-features: "true"
-          base-path-to-features: "./src"
-          generate-docs: "true"
+          publish-features: true
+          base-path-to-features: ./src
+          generate-docs: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Commit Changes to Repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update documentation
+          commit_message: Update for release
           file_pattern: ":!test\\* :!test/*"
