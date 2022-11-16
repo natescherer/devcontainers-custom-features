@@ -17,5 +17,16 @@ jobs:
       - uses: actions/checkout@v3
       - name: Do Versioning
         run: |
-          $Changelogs = Get-ChildItem Get-ChildItem -Path $env:GITHUB_WORKSPACE -Filter "CHANGELOG.md" -Recurse
+          Install-Module ChangelogManagement
+
+          $Changelogs = Get-ChildItem -Path $env:GITHUB_WORKSPACE -Filter "CHANGELOG.md" -Recurse
           Write-Host $Changelogs
+
+          foreach ($Changelog in $Changelogs) {
+            $Data = Get-ChangelogData -Path $Changelog.FullName
+            if ($Data.Unreleased) {
+              Write-Host "$Changelog is ready to be released"
+            } else {
+              Write-Host "$Changelog does not need released"
+            }
+          }
