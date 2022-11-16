@@ -37,9 +37,17 @@ jobs:
               $VersionOverridden = $false
               if (Test-Path -Path $NextVersionPath) {
                 $NextVersionFromFile = Get-Content -Path $NextVersionPath -Raw
-                Write-Host "$NextVersionFromFile is suggested next version"
+                if ([SemanticVersion]$NextVersionFromFile -gt [SemanticVersion]$CurrentVersion) {
+                  Write-Host "NEXTVERSION file contains a valid override value of $NextVersionFromFile"
+                  $NextVersion = $NextVersionFromFile
+                  $VersionOverridden = $true
+                } else {
+                  Write-Host "NEXTVERSION file version $NextVersionFromFile is older than current version $CurrentVersion. Ignoring."
+                }
               }
-              $NewVersion = Step-Version -Version $CurrentVersion -By Patch
-              Write-Host "New Version for '$Jsonpath' is $NewVersion"
+              if ($VersionOverridden -eq $false) {
+                $NextVersion = Step-Version -Version $CurrentVersion -By Patch
+              }
+              Write-Host "New Version for '$Jsonpath' is $NextVersion"
             }
           }
