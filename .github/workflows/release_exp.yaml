@@ -28,9 +28,10 @@ jobs:
             if ($Data.Unreleased.RawData) {
               $BasePath = Split-Path -Path $Changelog.FullName -Parent
               $JsonPath = Join-Path $BasePath "devcontainer-feature.json"
+              Write-Host "'$JsonPath' needs updated for release..." -Color Green
               $JsonData = Get-Content -Path $JsonPath -Raw | ConvertFrom-Json -Depth 100
-              Write-Host "Current Version for '$JsonPath' is $($JsonData.version)"
-            } else {
-              Write-Host "$Changelog does not need released"
+              Write-Host "Current Version for '$JsonPath' is $($JsonData.version)" -ForegroundColor Cyan
+              $NewVersion = Update-Version -ver $JsonData.version
+              Write-Host "New Version for '$Jsonpath' is $NewVersion" -ForegroundColor Cyan
             }
           }
