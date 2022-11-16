@@ -31,9 +31,11 @@ jobs:
               $NextVersionPath = Join-Path $BasePath "NEXTVERSION"
               $JsonData = Get-Content -Path $JsonPath -Raw | ConvertFrom-Json -Depth 100
               $CurrentVersion = $JsonData.version
-              Write-Host "'$JsonPath' needs updated for release..."
 
+              Write-Host "'$JsonPath' needs updated for release..."
               Write-Host "Current Version for '$JsonPath' is $CurrentVersion"
+              Write-Host ""
+
               $VersionOverridden = $false
               if (Test-Path -Path $NextVersionPath) {
                 $NextVersionFromFile = Get-Content -Path $NextVersionPath -Raw
@@ -48,6 +50,20 @@ jobs:
               if ($VersionOverridden -eq $false) {
                 $NextVersion = Step-Version -Version $CurrentVersion -By Patch
               }
+
               Write-Host "New Version for '$Jsonpath' is $NextVersion"
+              Write-Host ""
+
+              Write-Host "Updating Version in '$JsonPath"
+              $JsonData.version = $NextVersion
+              $JsonData | ConvertTo-Json -Depth 100 | Out-File $JsonPath
+              Write-Host ""
+
+              Write-Host "Updating Changelog..."
+              Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode GitHub
             }
           }
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}
