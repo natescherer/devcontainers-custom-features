@@ -18,7 +18,7 @@ jobs:
       - name: Do Versioning
         run: |
           Install-Module ChangelogManagement -Force
-          Install-Module SemVer -Force
+          Install-Module BuildHelpers -Force
 
           $Changelogs = Get-ChildItem -Path $env:GITHUB_WORKSPACE -Filter "CHANGELOG.md" -Recurse
           Write-Host $Changelogs
@@ -31,7 +31,7 @@ jobs:
               Write-Host "'$JsonPath' needs updated for release..." -Color Green
               $JsonData = Get-Content -Path $JsonPath -Raw | ConvertFrom-Json -Depth 100
               Write-Host "Current Version for '$JsonPath' is $($JsonData.version)" -ForegroundColor Cyan
-              $NewVersion = Update-Version -ver $JsonData.version
+              $NewVersion = Step-Version -Version $JsonData.version -By Minor
               Write-Host "New Version for '$Jsonpath' is $NewVersion" -ForegroundColor Cyan
             }
           }
