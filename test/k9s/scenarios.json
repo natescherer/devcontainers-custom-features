@@ -1,0 +1,34 @@
+{
+    "latest_debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "k9s": {
+                "version": "latest"
+            }
+        }
+    },
+    "latest_ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "k9s": {
+                "version": "latest"
+            }
+        }
+    },
+    "specific_debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "k9s": {
+                "version": "0.26.6"
+            }
+        }
+    },
+    "specific_ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "k9s": {
+                "version": "0.26.6"
+            }
+        }
+    }
+}
