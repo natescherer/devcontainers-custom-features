@@ -56,10 +56,10 @@ jobs:
 
               Write-Host "Updating Version in '$JsonPath"
               $JsonData.version = $NextVersion
-              $JsonData | ConvertTo-Json -Depth 100 | Out-File $JsonPath
+              $JsonData | ConvertTo-Json -Depth 100 | Out-File $JsonPath -NoNewline
               Write-Host ""
 
-              Write-Host "Updating Changelog..."
+              Write-Host "Updating Changelog '$($Changelog.FullName)'..."
               Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode GitHub
             }
           }
