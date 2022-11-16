@@ -1,4 +1,4 @@
-# k9s
+# k9s (k9s)
 
 A Development Container Feature to install [k9s](https://k9scli.io/).
 
