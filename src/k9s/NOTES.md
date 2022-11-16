@@ -1,3 +1,3 @@
 ## Supported Linux Versions
 
-This feature is tested and supported on Alpine, Debian, and Ubuntu-based development containers.
+This feature is tested and supported on Debian and Ubuntu-based development containers.
