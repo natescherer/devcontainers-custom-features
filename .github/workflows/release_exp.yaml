@@ -24,7 +24,7 @@ jobs:
 
           foreach ($Changelog in $Changelogs) {
             $Data = Get-ChangelogData -Path $Changelog.FullName
-            if ($Data.Unreleased) {
+            if ($Data.Unreleased.RawData) {
               Write-Host "$Changelog is ready to be released"
             } else {
               Write-Host "$Changelog does not need released"
