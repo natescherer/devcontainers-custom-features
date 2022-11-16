@@ -7,9 +7,7 @@ A feature to install PowerShell resources (modules and scripts) from the PowerSh
 
 ```json
 "features": {
-    "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {
-        "version": "latest"
-    }
+    "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {}
 }
 ```
 
