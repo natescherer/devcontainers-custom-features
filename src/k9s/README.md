@@ -7,7 +7,9 @@ A feature to install k9s
 
 ```json
 "features": {
-    "ghcr.io/natescherer/devcontainers-custom-features/k9s:1": {}
+    "ghcr.io/natescherer/devcontainers-custom-features/k9s:1": {
+        "version": "latest"
+    }
 }
 ```
 
