@@ -1,0 +1,21 @@
+name: Experimental Release
+on:
+  push:
+    branches:
+      - main
+      - bugfix/**
+      - feature/**
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v3
+      - name: Do Versioning
+        run: |
+          $Changelogs = Get-ChildItem Get-ChildItem -Path $env:GITHUB_WORKSPACE -Filter "CHANGELOG.md" -Recurse
+          Write-Host $Changelogs
