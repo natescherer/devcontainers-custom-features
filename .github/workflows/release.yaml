@@ -56,7 +56,7 @@ jobs:
               Write-Host ""
 
               Write-Host "Updating Changelog '$($Changelog.FullName)'..."
-              Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode GitHub
+              Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode None
             }
           }
       - name: Publish Features
