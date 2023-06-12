@@ -9,6 +9,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2022-11-16
 ### Added
 - Initial release
-
-[Unreleased]: https://github.com/natescherer/devcontainers-custom-features/compare/v1.0.0..HEAD
-[1.0.0]: https://github.com/natescherer/devcontainers-custom-features/tree/v1.0.0
