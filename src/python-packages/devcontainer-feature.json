@@ -1,0 +1,26 @@
+{
+    "name": "Python Packages from PyPI (via pip)",
+    "id": "python-packages",
+    "version": "0.1.0",
+    "description": "A feature to install Python packages from the Python Package Index via pip for all users on a devcontainer. Supports a list of packages as well as a requirements.txt file stored inside the container.",
+    "options": {
+        "packages": {
+            "type": "string",
+            "description": "A space-separated list of packages to install, provided in the same format you would provide to 'pip install'."
+        },
+        "requirementsFile": {
+            "type": "string",
+            "description": "Path to a requirements.txt file defining one or more packages to install."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/python"
+    ],
+    "mounts": [
+        {
+            "source": "~",
+            "target": "/mnt/hosthome",
+            "type": "bind"
+        }
+    ]
+}
