@@ -6,21 +6,14 @@
     "options": {
         "packages": {
             "type": "string",
-            "description": "A space-separated list of packages to install, provided in the same format you would provide to 'pip install'."
+            "description": "A space-separated list of one or more packages to install, provided in the same format you would provide to 'pip install'."
         },
         "requirementsFile": {
             "type": "string",
-            "description": "Path to a requirements.txt file defining one or more packages to install."
+            "description": "Absolute path to a requirements.txt file inside the container defining one or more packages to install."
         }
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/python"
-    ],
-    "mounts": [
-        {
-            "source": "~",
-            "target": "/mnt/hosthome",
-            "type": "bind"
-        }
     ]
 }
