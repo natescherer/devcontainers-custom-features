@@ -1,0 +1,18 @@
+{
+    "packages_ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/python:3",
+        "features": {
+            "python-packages": {
+                "packages": "requests"
+            }
+        }
+    },
+    "packages_ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/python:3",
+        "features": {
+            "python-packages": {
+                "packages": "requests"
+            }
+        }
+    },
+}
