@@ -15,7 +15,7 @@
                 "nomad"
             ],
             "default": "",
-            "description": "A space-separated list of one or more asdf plugins to install. Additionally, version and/or repository can be specified in the format 'name:version@repo'. If version is excluded, latest is assumed. If repo is excluded, https://github.com/asdf-vm/asdf-plugins is assumed. If you are installing multiple versions of the same plugin, the last one in this list will be set as global version."
+            "description": "A space-separated list of one or more asdf plugins to install. Additionally, version and/or repository can be specified in the format 'name:version@repo'. "
         },
         "latestVersionPattern": {
             "type": "string",

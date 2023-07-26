@@ -143,12 +143,12 @@ while [ -n "$1" ]; do
 	if [[ "$1" == *":"* ]] && [[ "$1" == *"@"* ]]; then
 		# Name, Version, and Repo
 		PLUGINNAME=$(echo $1 | awk -F ':' '{print $1}')
-		VERSION=$(echo $1 | awk -F ':' '{print $2}' | awk -F '@' '{print $1}')
+		VERSION="latest:$(echo $1 | awk -F ':' '{print $2}' | awk -F '@' '{print $1}')"
 		PLUGINREPO=$(echo $1 | awk -F '@' '{print $2}')
 	elif [[ "$1" == *":"* ]]; then
 		# Name and Version
 		PLUGINNAME=$(echo $1 | awk -F ':' '{print $1}')
-		VERSION=$(echo $1 | awk -F ':' '{print $2}')
+		VERSION="latest:$(echo $1 | awk -F ':' '{print $2}')"
 		PLUGINREPO=""
 	elif [[ "$1" == *"@"* ]]; then
 		# Name and Repo

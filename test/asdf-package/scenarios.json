@@ -1,0 +1,53 @@
+{
+    "install_rabbitmq": {
+        "image": "debian:bullseye",
+        "features": {
+            "ghcr.io/devcontainers-contrib/features/apt-get-packages" : {"packages": "xz-utils"},
+            "asdf-package": {
+                "plugin": "rabbitmq:v3.12.0",
+                "latestVersionPattern": "v"
+            }
+        }
+    },
+    "install_act": {
+        "image": "debian:bullseye",
+        "features": {
+            "asdf-package": {
+                "plugin": "act:latest"
+            }
+        }
+    },
+    "install_act_with_repo": {
+        "image": "debian:bullseye",
+        "features": {
+            "asdf-package": {
+                "plugin": "act:latest@https://github.com/grimoh/asdf-act.git"
+            }
+        }
+    },
+    "install_terraform_alpine": {
+        "image": "mcr.microsoft.com/devcontainers/base:alpine-3.17",
+        "features": {
+            "asdf-package": {
+                "plugin": "terraform:latest"
+            }
+        }
+    },
+    "install_act_and_rabbitmq": {
+        "image": "debian:bullseye",
+        "features": {
+            "ghcr.io/devcontainers-contrib/features/apt-get-packages" : {"packages": "xz-utils"},
+            "asdf-package": {
+                "plugin": "act:latest rabbitmq:v3.12.0"
+            }
+        }
+    },
+    "install_python_with_partial_version": {
+        "image": "debian:bullseye",
+        "features": {
+            "asdf-package": {
+                "plugin": "python:3.11"
+            }
+        }
+    }
+}
