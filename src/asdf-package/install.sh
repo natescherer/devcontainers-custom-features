@@ -161,7 +161,7 @@ while [ -n "$1" ]; do
 		VERSION="latest"
 		PLUGINREPO=""
 	fi
-	if [ "$VERSION" == "latest:latest"]; then
+	if [ "$VERSION" = "latest:latest" ]; then
 		# This catches an edge case where users specifically put in 'name:latest'
 		VERSION="latest"
 	fi
