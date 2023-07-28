@@ -1,0 +1,24 @@
+{
+    "debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "ghcr.io/devcontainers-contrib/features/apt-get-packages": {
+                "packages": "libssl-dev,zlib1g-dev,libbz2-dev,libreadline-dev,libsqlite3-dev,libncursesw5-dev,xz-utils,tk-dev,libxml2-dev,libxmlsec1-dev,libffi-dev,liblzma-dev"
+            },
+            "hypermodern-python": {
+                "versions": "3.10 3.11"
+            }
+        }
+    },
+    "ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers-contrib/features/apt-get-packages": {
+                "packages": "libssl-dev,zlib1g-dev,libbz2-dev,libreadline-dev,libsqlite3-dev,libncursesw5-dev,xz-utils,tk-dev,libxml2-dev,libxmlsec1-dev,libffi-dev,liblzma-dev"
+            },
+            "hypermodern-python": {
+                "versions": "3.10 3.11"
+            }
+        }
+    }
+}
