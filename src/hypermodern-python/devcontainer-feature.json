@@ -1,0 +1,24 @@
+{
+  "name": "hypermoden-python",
+  "id": "hypermodern-python",
+  "version": "1.0.0",
+  "description": "A feature to install multiple Python versions via asdf along with the tools needed to create Hypermodem Python projects. (https://github.com/cjolowicz/cookiecutter-hypermodern-python)",
+  "options": {
+    "versions": {
+      "type": "string",
+      "default": "3.10 3.11",
+      "description": "A space separated list of Python major versions to install and configure."
+    },
+    "requirementsFile": {
+      "type": "string",
+      "default": "",
+      "description": "A fully-qualified path to a requirements.txt file inside the container which will be installed for every Python version."
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers-contrib/features/fish-apt-get",
+    "ghcr.io/meaningful-ooo/devcontainer-features/fish",
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/devcontainers/features/powershell"
+  ]
+}
