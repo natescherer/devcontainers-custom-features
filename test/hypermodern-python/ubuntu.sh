@@ -9,6 +9,7 @@ check "python 3.11" asdf list python 3.11
 check "cookiecutter" cookiecutter --version
 check "poetry" poetry --version
 check "nox" nox --version
-check "nox-poetry" pipx list --include-injected | grep nox-poetry
+pipx list --include-injected --json > /tmp/pipxlist.json
+check "nox-poetry"  yq '.venvs.nox.metadata.injected_packages | has("nox-poetry")' /tmp/pipxlist.json  -o json -e
 
 reportResults

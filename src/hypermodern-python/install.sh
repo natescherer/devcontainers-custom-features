@@ -34,6 +34,25 @@ check_packages() {
 
 ensure_prereqs() {
     check_packages libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev curl git ca-certificates
+
+    if ! type yq >/dev/null 2>&1; then
+        ARCHITECTURE="$(uname -m)"
+        case ${ARCHITECTURE} in
+        x86_64) ARCHITECTURE="amd64" ;;
+        aarch64 | armv8*) ARCHITECTURE="arm64" ;;
+        aarch32 | armv7* | armvhf*) ARCHITECTURE="arm" ;;
+        i?86) ARCHITECTURE="386" ;;
+        *)
+        	echo "(!) Architecture ${ARCHITECTURE} unsupported"
+            exit 1
+            ;;
+        esac
+        echo "Installing yq..."
+        wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_$ARCHITECTURE -O /usr/bin/yq
+        chmod +x /usr/bin/yq
+    else
+        echo "'yq' is already installed"
+    fi
 }
 
 ensure_asdf_is_installed() {
@@ -87,33 +106,92 @@ EOF
     fi
 }
 
-install_via_asdf() {
-	PLUGIN=$1
-    VERSION=$2
-    LATESTVERSIONPATTERN="[0-9]"
+ensure_asdf_plugin_is_installed() {
+    PLUGIN=$1
+    REPO=$2
+
+    su - "$_REMOTE_USER" <<EOF
+        . $_REMOTE_USER_HOME/.asdf/asdf.sh
+
+        if asdf list "$PLUGIN" >/dev/null 2>&1; then
+            echo "'$PLUGIN' asdf plugin already exists - skipping adding it"
+        else
+            asdf plugin add $PLUGIN
+        fi
+EOF
+}
+
+install_python_via_asdf() {
+    VERSION=$1
 
 	set -e
 	
     su - "$_REMOTE_USER" <<EOF
         . $_REMOTE_USER_HOME/.asdf/asdf.sh
 
-        if asdf list "$PLUGIN" >/dev/null 2>&1; then
-            echo "$PLUGIN  already exists - skipping adding it"
-        else
-            asdf plugin add "$PLUGIN" "$REPO" 
-        fi
-
         if [ -n "$REQUIREMENTSFILE" ]; then
-            ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$REQUIREMENTSFILE"
+            echo "Requirements file '$REQUIREMENTSFILE' exists with contents: $(cat $REQUIREMENTSFILE | tr '\n' ',')"
+            echo "Setting variable ASDF_PYTHON_DEFAULT_PACKAGES_FILE to $REQUIREMENTSFILE"
+            export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$REQUIREMENTSFILE"
         fi
 
-        asdf install "$PLUGIN" "$VERSION"
-        asdf global "$PLUGIN" "$VERSION"
+        asdf install python "$VERSION"
+        asdf global python "$VERSION"
 
         pip install --upgrade pip
+EOF
+}
 
-        python -m pip install --user pipx
-        python -m pipx ensurepath
+ensure_supporting_tools_are_installed() {
+    su - "$_REMOTE_USER" <<EOF
+        . $_REMOTE_USER_HOME/.asdf/asdf.sh
+
+        ensure_pipx_app_is_installed() {
+            PIPX_APP=\$1
+
+            if ! type \$PIPX_APP >/dev/null 2>&1; then
+                echo "Installing '\$PIPX_APP' via pipx..."
+                pipx install "\$PIPX_APP"
+            else
+                echo "'\$PIPX_APP' is already installed"
+            fi
+        }
+
+        ensure_pipx_injection() {
+            ENV=\$1
+            INJECTION=\$2
+
+            if ! pipx list --include-injected --json | yq '.venvs.strenv(ENV).metadata.injected_packages | has("strenv(INJECTION)")' -o json; then
+                echo "Injecting '\$INJECTION' into '\$ENV' via pipx..."
+                pipx inject \$ENV \$INJECTION
+            else
+                echo "'\$ENV' already has '\$INJECTION' injected"
+            fi
+
+        }
+
+        if ! type pipx >/dev/null 2>&1; then
+            if asdf list pipx >/dev/null 2>&1; then
+                echo "'pipx' asdf plugin already exists - skipping adding it"
+            else
+                asdf plugin add pipx
+            fi
+            echo "Installing 'pipx' via asdf..."
+            asdf install pipx latest
+            asdf global pipx latest
+            pipx ensurepath
+        else
+            echo "pipx is already installed"
+        fi
+
+        ensure_pipx_app_is_installed cookiecutter
+        ensure_pipx_app_is_installed poetry
+        ensure_pipx_app_is_installed nox
+        ensure_pipx_injection nox nox-poetry
+        # pipx install cookiecutter
+        # pipx install poetry
+        # pipx install nox
+        # pipx inject nox nox-poetry
 EOF
 }
 
@@ -123,33 +201,18 @@ ensure_prereqs
 # Install asdf and its requirements (if needed)
 ensure_asdf_is_installed
 
+# Add python asdf plugin, if needed
+ensure_asdf_plugin_is_installed "python"
+
 # Install Python versions
 set -- $VERSIONS
 while [ -n "$1" ]; do
     PLUGINNAME="python"
     VERSION="latest:$1"
 
-	install_via_asdf "$PLUGINNAME" "$VERSION" ""
+	install_python_via_asdf "$VERSION"
 	shift
 done
 
-# Install supporting tools
-su - "$_REMOTE_USER" <<EOF
-    . $_REMOTE_USER_HOME/.asdf/asdf.sh
-
-    if ! type pipx >/dev/null 2>&1; then
-        if asdf list pipx >/dev/null 2>&1; then
-            echo "pipx already exists - skipping adding it"
-        else
-            asdf plugin add pipx
-        fi
-
-        asdf install pipx latest
-        asdf global pipx latest
-    fi
-
-    pipx install cookiecutter
-    pipx install poetry
-    pipx install nox
-    pipx inject nox nox-poetry
-EOF
+# Install Hypermodern Python supporting tools
+ensure_supporting_tools_are_installed
