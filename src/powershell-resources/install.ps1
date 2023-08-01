@@ -1,3 +1,6 @@
+$PsrgPinnedVerShort = "0.5.23"
+$PsrgPinnedVer = "0.5.23-beta23"
+
 Write-Host -Object "Ensuring PowerShellGet 2.2.5 is installed..."
 # Ensuring PowerShellGet stable is at least version 2.2.5
 $PowerShellGetMetadata = Get-Module -Name PowerShellGet
@@ -12,14 +15,16 @@ if ($PowerShellGetMetadata.Version -ge "2.2.5") {
 $PSResourceGetMetadata = Get-Module -ListAvailable -Name Microsoft.PowerShell.PSResourceGet
 if (!$PSResourceGetMetadata) {
     Write-Host -Object "'Microsoft.PowerShell.PSResourceGet' is not installed, now installing..."
-    Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion 0.5.23-beta23 -Force -AllowPrerelease -Scope AllUsers
-} elseif ($PSResourceGetMetadata.Version -gt "0.5.23") {
-    Write-Warning -Message "'Microsoft.PowerShell.PSResourceGet' is higher than the pinned version of '0.5.23'. This may cause unexpected results. Consider opening a GitHub issue at 'https://github.com/natescherer/devcontainers-custom-features/issues' regarding this."
-} elseif ($PSResourceGetMetadata.Version -lt "0.5.23") {
-    Write-Host "'Microsoft.PowerShell.PSResourceGet' is less than the pinned version of '0.5.23'. Now updating..."
-    Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion 0.5.23-beta23 -Force -AllowPrerelease -Scope AllUsers
+    Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion $PsrgPinnedVer -Force -AllowPrerelease -Scope AllUsers
+} elseif ($PSResourceGetMetadata.Version -gt $PsrgPinnedVerShort) {
+    Write-Warning -Message "'Microsoft.PowerShell.PSResourceGet' is higher than the pinned version of '$PsrgPinnedVer'. This may cause unexpected results. Consider opening a GitHub issue at 'https://github.com/natescherer/devcontainers-custom-features/issues' regarding this."
+} elseif ($PSResourceGetMetadata.Version -lt $PsrgPinnedVerShort) {
+    Write-Host "'Microsoft.PowerShell.PSResourceGet' is less than the pinned version of '$PsrgPinnedVer'. Now updating..."
+    Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion $PsrgPinnedVer -Force -AllowPrerelease -Scope AllUsers
+} elseif ($PSResourceGetMetadata.Version -eq $PsrgPinnedVerShort) {
+    Write-Host "'Microsoft.PowerShell.PSResourceGet' is already at pinned version of '$PsrgPinnedVer'."
 } else {
-    throw "Something went wrong while ensureing 'Microsoft.PowerShell.PSResourceGet' is installed. Consider opening a GitHub issue at 'https://github.com/natescherer/devcontainers-custom-features/issues' regarding this."
+    throw "Something went wrong while ensuring 'Microsoft.PowerShell.PSResourceGet' is installed. Consider opening a GitHub issue at 'https://github.com/natescherer/devcontainers-custom-features/issues' regarding this."
 }
 
 Write-Host -Object "Installing Resource(s)..."
