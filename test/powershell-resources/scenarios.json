@@ -158,5 +158,25 @@
                 "resources": "ChangelogManagement,PoshEmail"
             }
         }
+    },
+    "existing_psresourceget_debian": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "powershell-resources": {
+                "resources": "ChangelogManagement,PoshEmail"
+            }
+        }
+    },
+    "existing_psresourceget_ubuntu": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "powershell-resources": {
+                "resources": "ChangelogManagement,PoshEmail"
+            }
+        }
     }
 }

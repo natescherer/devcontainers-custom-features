@@ -24,4 +24,4 @@ RUN chmod +x /opt/microsoft/powershell/7/pwsh
 RUN ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # Install old version of PSResourceGet
-RUN pwsh -c "Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion 0.5.22-beta22 -Force -AllowPrerelease -Scope AllUsers"
+RUN pwsh -c "Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion 0.5.23-beta23 -Force -AllowPrerelease -Scope AllUsers"
