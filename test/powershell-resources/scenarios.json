@@ -1,5 +1,5 @@
 {
-    "powershell-resources_module_via_requiredresourcejsonbase64_debian": {
+    "module_via_requiredresourcejsonbase64_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -10,7 +10,7 @@
             }
         }
     },
-    "powershell-resources_module_via_requiredresourcejsonbase64_ubuntu": {
+    "module_via_requiredresourcejsonbase64_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -21,7 +21,33 @@
             }
         }
     },
-    "powershell-resources_script_via_requiredresourcejsonbase64_debian": {
+    "module_via_requiredresourcejsonfile_debian": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "ghcr.io/devcontainers/features/powershell": {
+                "version": "latest"
+            },
+            "powershell-resources": {
+                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+            }
+        }
+    },
+    "module_via_requiredresourcejsonfile_ubuntu": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "ghcr.io/devcontainers/features/powershell": {
+                "version": "latest"
+            },
+            "powershell-resources": {
+                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+            }
+        }
+    },
+    "script_via_requiredresourcejsonbase64_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -32,7 +58,7 @@
             }
         }
     },
-    "powershell-resources_script_via_requiredresourcejsonbase64_ubuntu": {
+    "script_via_requiredresourcejsonbase64_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -43,7 +69,33 @@
             }
         }
     },
-    "powershell-resources_module_specific_version_debian": {
+    "script_via_requiredresourcejsonfile_debian": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "ghcr.io/devcontainers/features/powershell": {
+                "version": "latest"
+            },
+            "powershell-resources": {
+                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+            }
+        }
+    },
+    "script_via_requiredresourcejsonfile_ubuntu": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "ghcr.io/devcontainers/features/powershell": {
+                "version": "latest"
+            },
+            "powershell-resources": {
+                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+            }
+        }
+    },
+    "module_specific_version_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -54,7 +106,7 @@
             }
         }
     },
-    "powershell-resources_module_specific_version_ubuntu": {
+    "module_specific_version_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -65,7 +117,7 @@
             }
         }
     },
-    "powershell-resources_resources_debian": {
+    "resources_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
@@ -76,12 +128,32 @@
             }
         }
     },
-    "powershell-resources_resources_ubuntu": {
+    "resources_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "ghcr.io/devcontainers/features/powershell": {
                 "version": "latest"
             },
+            "powershell-resources": {
+                "resources": "ChangelogManagement,PoshEmail"
+            }
+        }
+    },
+    "upgrade_psresourceget_debian": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
+            "powershell-resources": {
+                "resources": "ChangelogManagement,PoshEmail"
+            }
+        }
+    },
+    "upgrade_psresourceget_ubuntu": {
+        "build": {
+            "dockerfile": "Dockerfile"
+        },
+        "features": {
             "powershell-resources": {
                 "resources": "ChangelogManagement,PoshEmail"
             }

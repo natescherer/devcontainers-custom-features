@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Test for requiredResourceJsonFile
+- Test for upgrading Microsoft.PowerShell.PSResourceGet prerelease versions
+
+### Changed
+- Moved all tests out of _global
+- Pinned to Microsoft.PowerShell.PSResourceGet 0.5.23-beta23
+- install.sh now tests if PowerShellGet is 2.2.5 and only upgrades if necessary
+- install.sh now tests if Microsoft.PowerShell.PSResourceGet is at least 0.5.23-beta23 and only upgrades if necessary
 
 ## [1.0.0] - 2022-11-04
 ### Added
