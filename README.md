@@ -10,9 +10,12 @@
 
 This repository contains a collection of features for [Development Containers](https://containers.dev). Click on the link for documentation of each feature.
 
-### [PowerShell Resources](src/powershell-resources/README.md)
+### [Hypermodern Python](src/hypermodern-python/README.md)
 
 ### [k9s](src/k9s/README.md)
+
+### [PowerShell Resources](src/powershell-resources/README.md)
+
 
 ## Contributors
 
