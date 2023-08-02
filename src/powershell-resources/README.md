@@ -7,9 +7,7 @@ A feature to install PowerShell resources (modules and scripts) from the PowerSh
 
 ```json
 "features": {
-    "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {
-        "requiredResourceJsonFile": "/opt/devcontainer/PwshResources.json"
-    }
+    "ghcr.io/natescherer/devcontainers-custom-features/powershell-resources:1": {}
 }
 ```
 
@@ -17,9 +15,9 @@ A feature to install PowerShell resources (modules and scripts) from the PowerSh
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| resources | A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install. | string | undefined |
-| requiredResourceJsonBase64 | Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode. | string | undefined |
-| requiredResourceJsonFile | Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file. | string | undefined |
+| resources | A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install. | string | - |
+| requiredResourceJsonBase64 | Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode. | string | - |
+| requiredResourceJsonFile | Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file. | string | - |
 
 ## Need to Install Specific Resource Versions?
 
