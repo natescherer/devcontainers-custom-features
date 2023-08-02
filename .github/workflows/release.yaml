@@ -58,6 +58,14 @@ jobs:
               Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode None
             }
           }
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: main
+          commit-message: Release ${{ github.event.repository.updated_at}}
+          branch: release/${{ github.event.repository.updated_at}}
+          delete-branch: true
+          title: Release ${{ github.event.repository.updated_at}}
       - name: Publish Features
         uses: devcontainers/action@v1
         with:
@@ -66,8 +74,3 @@ jobs:
           generate-docs: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Commit Changes to Repo
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update for release
-          file_pattern: ":!test\\* :!test/*"
