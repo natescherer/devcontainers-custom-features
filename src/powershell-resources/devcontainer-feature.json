@@ -6,14 +6,17 @@
     "options": {
         "resources": {
             "type": "string",
+            "default": "",
             "description": "A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install."
         },
         "requiredResourceJsonBase64": {
             "type": "string",
+            "default": "",
             "description": "Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode."
         },
         "requiredResourceJsonFile": {
             "type": "string",
+            "default": "",
             "description": "Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
         }
     },
