@@ -1,26 +1,26 @@
 {
-    "name": "PowerShell Resources",
-    "id": "powershell-resources",
-    "version": "1.0.0",
-    "description": "A feature to install PowerShell resources (modules and scripts) from the PowerShell Gallery for all users on a devcontainer.",
-    "options": {
-        "resources": {
-            "type": "string",
-            "default": "",
-            "description": "A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install."
-        },
-        "requiredResourceJsonBase64": {
-            "type": "string",
-            "default": "",
-            "description": "Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode."
-        },
-        "requiredResourceJsonFile": {
-            "type": "string",
-            "default": "",
-            "description": "Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
-        }
+  "name": "PowerShell Resources",
+  "id": "powershell-resources",
+  "version": "1.1.0",
+  "description": "A feature to install PowerShell resources (modules and scripts) from the PowerShell Gallery for all users on a devcontainer.",
+  "options": {
+    "resources": {
+      "type": "string",
+      "default": "",
+      "description": "A comma-seprated string listing the names of one or more resources available in the PowerShell Gallery to install."
     },
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/powershell"
-    ]
+    "requiredResourceJsonBase64": {
+      "type": "string",
+      "default": "",
+      "description": "Base64-encoded JSON defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for JSON format, and use a tool like https://www.base64encode.org/ to encode."
+    },
+    "requiredResourceJsonFile": {
+      "type": "string",
+      "default": "",
+      "description": "Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/powershell"
+  ]
 }
