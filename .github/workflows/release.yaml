@@ -17,11 +17,10 @@ jobs:
           Install-Module BuildHelpers -Force
 
           $Changelogs = Get-ChildItem -Path $env:GITHUB_WORKSPACE -Filter "CHANGELOG.md" -Recurse
-          Write-Host $Changelogs
 
           foreach ($Changelog in $Changelogs) {
             $Data = Get-ChangelogData -Path $Changelog.FullName
-            if ($Data.Unreleased.RawData) {
+            if ($Data.Unreleased.ChangeCount -gt 0) {
               $BasePath = Split-Path -Path $Changelog.FullName -Parent
               $JsonPath = Join-Path $BasePath "devcontainer-feature.json"
               $NextVersionPath = Join-Path $BasePath "NEXTVERSION"
