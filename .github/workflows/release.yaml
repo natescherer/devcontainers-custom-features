@@ -38,14 +38,6 @@ jobs:
               }
             }
           }
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          base: main
-          commit-message: Release ${{ github.run_id }}
-          branch: release/${{ github.run_id }}
-          delete-branch: true
-          title: Release ${{ github.run_id }}
       - name: Publish Features
         uses: devcontainers/action@v1
         with:
@@ -54,3 +46,11 @@ jobs:
           generate-docs: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: main
+          commit-message: Release ${{ github.run_id }}
+          branch: release/${{ github.run_id }}
+          delete-branch: true
+          title: Release ${{ github.run_id }}
