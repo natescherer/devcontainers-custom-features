@@ -11,7 +11,7 @@ jobs:
         shell: pwsh
     steps:
       - uses: actions/checkout@v3
-      - name: Update Version Numbers for Features with Changes
+      - name: Validate Changelogs & Version Numbers
         run: |
           Install-Module ChangelogManagement -Force
 
@@ -31,7 +31,7 @@ jobs:
               }
 
               Write-Host "Updating Changelog '$($Changelog.FullName)'..."
-              Update-Changelog -Path $Changelog.FullName -ReleaseVersion $NextVersion -LinkMode None
+              Update-Changelog -Path $Changelog.FullName -ReleaseVersion $JsonVersion -LinkMode None
             } else {
               if ([System.Management.Automation.SemanticVersion]$JsonVersion -gt [System.Management.Automation.SemanticVersion]$Data.LastVersion) {
                 throw "'$JsonPath' contains a valid version for release, but there are no changes in '$($Changelog.FullName)'."
