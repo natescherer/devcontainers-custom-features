@@ -22,7 +22,9 @@ if (($NuGetMetadata.Version -lt 2.8.5.201) -or !$NuGetMetadata.Version) {
 }
 
 # Ensuring Microsoft.PowerShell.PSResourceGet is installed
-$PSResourceGetMetadata = Get-Module -ListAvailable -Name Microsoft.PowerShell.PSResourceGet
+Write-Host "Beginning Test"
+$PSResourceGetMetadata = Get-Module -Name Microsoft.PowerShell.PSResourceGet -ListAvailable
+Write-Host "Ending Test"
 if (!$PSResourceGetMetadata) {
     Write-Host -Object "'Microsoft.PowerShell.PSResourceGet' is not installed, now installing..."
     Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion $PsrgPinnedVer -Force -AllowPrerelease -Scope AllUsers -Verbose
