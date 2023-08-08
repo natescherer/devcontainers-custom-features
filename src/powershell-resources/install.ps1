@@ -11,6 +11,16 @@ if ($PowerShellGetMetadata.Version -ge "2.2.5") {
     Write-Host -Object "PowerShellGet is up-to-date."
 }
 
+# Ensuring NuGet package provider is installed
+Write-Host -Object "Ensuring NuGet Package Provider >=2.8.5.201 is installed..."
+$NuGetMetadata = Get-PackageProvider -Name NuGet
+if (($NuGetMetadata.Version -lt 2.8.5.201) -or !$NuGetMetadata.Version) {
+    Write-Host -Object "Updating NuGet Package Provider..."
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+} else {
+    Write-Host -Object "NuGet Package Provider is up-to-date."
+}
+
 # Ensuring Microsoft.PowerShell.PSResourceGet is installed
 $PSResourceGetMetadata = Get-Module -ListAvailable -Name Microsoft.PowerShell.PSResourceGet
 if (!$PSResourceGetMetadata) {
