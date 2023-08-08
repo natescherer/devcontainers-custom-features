@@ -3,8 +3,8 @@ $PsrgPinnedVer = "0.5.23-beta23"
 
 Write-Host -Object "Ensuring PowerShellGet 2.2.5 is installed..."
 # Ensuring PowerShellGet stable is at least version 2.2.5
-$PowerShellGetMetadata = Get-Module -Name PowerShellGet
-if ($PowerShellGetMetadata.Version -ge "2.2.5") {
+$PowerShellGetMetadata = Get-Module -Name PowerShellGet -ListAvailable
+if (($PowerShellGetMetadata.Version -lt "2.2.5") -or !$PowerShellGetMetadata.Version) {
     Write-Host -Object "Updating PowerShellGet to 2.2.5..."
     Install-Module -Name PowerShellGet -Force -AllowClobber -Scope AllUsers
 } else {
