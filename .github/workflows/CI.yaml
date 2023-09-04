@@ -14,7 +14,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Latest devcontainer CLI
         run: npm install -g @devcontainers/cli
       - name: Run Tests
@@ -26,7 +26,7 @@ jobs:
       run:
         shell: pwsh
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install devcontainer CLI
         run: npm install -g @devcontainers/cli
       - name: Install Cloudsmith CLI
