@@ -1,8 +1,8 @@
 {
-  "name": "Hypermodern Python",
+  "name": "Hypermodern and Postmodern Python",
   "id": "hypermodern-python",
   "version": "1.0.0",
-  "description": "A feature to install multiple Python versions via asdf along with the tools needed to create Hypermodern Python projects. (https://github.com/cjolowicz/cookiecutter-hypermodern-python)",
+  "description": "A feature to install multiple Python versions via asdf along with the tools needed to create Hypermodern or Postmodern Python projects. (https://github.com/cjolowicz/cookiecutter-hypermodern-python) (https://github.com/natescherer/cookiecutter-postmodern-python)",
   "options": {
     "versions": {
       "type": "string",
