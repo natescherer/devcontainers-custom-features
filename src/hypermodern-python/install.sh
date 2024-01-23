@@ -185,6 +185,7 @@ ensure_supporting_tools_are_installed() {
         fi
 
         ensure_pipx_app_is_installed cookiecutter
+        ensure_pipx_app_is_installed cruft
         ensure_pipx_app_is_installed poetry
         ensure_pipx_app_is_installed nox
         ensure_pipx_injection nox nox-poetry
