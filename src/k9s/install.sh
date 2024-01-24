@@ -1,39 +1,43 @@
-#!/bin/sh
+#!/bin/bash
 set -e
+
+VERSION=${VERSION:-""}
 
 repo="derailed/k9s"
 filenameTemplate="k9s_Linux_ARCH.tar.gz$"
 binaryName="k9s"
 
 find_github_release_asset_url() {
-    local repo=$1
-    local filenameTemplate=$2
-    local version=$3
-    local versionPrefix=${4:-"v"}
+    local repo filenameTemplate version versionPrefix releaseUrl arch filenameRegex downloadUrl
+    repo=$1
+    filenameTemplate=$2
+    version=$3
+    versionPrefix=${4:-"v"}
 
     if [ "${version}" = "latest" ]; then
-        local releaseUrl="https://api.github.com/repos/${repo}/releases/latest"
+        releaseUrl="https://api.github.com/repos/${repo}/releases/latest"
     else
-        local releaseUrl="https://api.github.com/repos/${repo}/releases/tags/${versionPrefix}${version}"
+        releaseUrl="https://api.github.com/repos/${repo}/releases/tags/${versionPrefix}${version}"
     fi
     arch="$(dpkg --print-architecture)"
     if [ "${arch}" = "amd64" ]; then
         arch="(amd64|x64|x86_64)"
     fi
 
-    local filenameRegex=$(echo "$filenameTemplate" | sed "s/VERSION/${version}/" | sed "s/ARCH/${arch}/")
-    local downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s ${releaseUrl} | jq -r -c ".assets[] | select(.name|test(\"${filenameRegex}\")) | .browser_download_url")
+    filenameRegex=$(echo "$filenameTemplate" | sed "s/VERSION/${version}/" | sed "s/ARCH/${arch}/")
+    downloadUrl=$(curl -H "Accept: application/vnd.github+json" -s "$releaseUrl" | jq -r -c ".assets[] | select(.name|test(\"${filenameRegex}\")) | .browser_download_url")
 
-    echo $downloadUrl
+    echo "$downloadUrl"
 }
 
 download_and_install_gzipped_tarball() {
-    local url=$1
-    local destFolder=$2
-    local binaryName=$3
+    local url destFolder binaryName installTempPath tarballName
+    url=$1
+    destFolder=$2
+    binaryName=$3
 
-    local installTempPath="/tmp/${binaryName}"
-    local tarballName=$(echo "$url" | rev | cut -d'/' -f1 | rev)
+    installTempPath="/tmp/${binaryName}"
+    tarballName=$(echo "$url" | rev | cut -d'/' -f1 | rev)
 
     echo "Installing $url to $destFolder..."
 
