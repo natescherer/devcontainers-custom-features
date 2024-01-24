@@ -1,5 +1,5 @@
 {
-    "latest_debian": {
+    "k9s_latest_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "k9s": {
@@ -7,7 +7,7 @@
             }
         }
     },
-    "latest_ubuntu": {
+    "k9s_latest_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "k9s": {
@@ -15,7 +15,7 @@
             }
         }
     },
-    "specific_debian": {
+    "k9s_specific_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "k9s": {
@@ -23,7 +23,7 @@
             }
         }
     },
-    "specific_ubuntu": {
+    "k9s_specific_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "k9s": {

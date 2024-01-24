@@ -2,7 +2,7 @@
 set -e
 
 repo="derailed/k9s"
-filenameTemplate="k9s_Linux_ARCH.tar.gz"
+filenameTemplate="k9s_Linux_ARCH.tar.gz$"
 binaryName="k9s"
 
 find_github_release_asset_url() {

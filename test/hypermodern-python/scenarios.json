@@ -1,5 +1,5 @@
 {
-    "debian": {
+    "hypermodern-python_debian": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "hypermodern-python": {
@@ -7,7 +7,7 @@
             }
         }
     },
-    "ubuntu": {
+    "hypermodern-python_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "hypermodern-python": {
@@ -15,7 +15,7 @@
             }
         }
     },
-    "ubuntu_with_requirements": {
+    "hypermodern-python_ubuntu_with_requirements": {
         "build": {
             "dockerfile": "Dockerfile"
         },
