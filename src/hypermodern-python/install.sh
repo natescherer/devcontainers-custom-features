@@ -18,10 +18,6 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
-check_alpine_packages() {
-    apk add -v --no-cache "$@"
-}
-
 check_packages_with_apt-get() {
 	if ! dpkg -s "$@" >/dev/null 2>&1; then
 		if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
@@ -76,17 +72,12 @@ ensure_asdf_is_installed() {
         "https://github.com/asdf-vm/asdf.git" --branch v0.12.0 $ASDF_BASEPATH 2>&1
 EOF
 
-    if grep "ID_LIKE=.*alpine.*\|ID=.*alpine.*" /etc/os-release; then
-        echo "Updating /etc/profile"
-        echo -e "export ASDF_DIR=\"$ASDF_BASEPATH\"" >>/etc/profile
-        echo -e ". $ASDF_BASEPATH/asdf.sh" >>/etc/profile
-    fi
-    if [[ "$(cat /etc/bash.bashrc)" != *"$ASDF_BASEPATH"* ]]; then
+    if ! grep -q -s "$ASDF_BASEPATH" "/etc/bash.bashrc"; then
         echo "Updating /etc/bash.bashrc"
         echo -e ". $ASDF_BASEPATH/asdf.sh" >>/etc/bash.bashrc
         echo -e ". $ASDF_BASEPATH/completions/asdf.bash" >>/etc/bash.bashrc
     fi
-    if [ -f "/etc/zsh/zshrc" ] && [[ "$(cat /etc/zsh/zshrc)" != *"$ASDF_BASEPATH"* ]]; then
+    if [ -f "/etc/zsh/zshrc" ] && ! grep -L -s "$ASDF_BASEPATH" "/etc/zsh/zshrc"; then
         echo "Updating /etc/zsh/zshrc"
         {
             echo -e ". $ASDF_BASEPATH/asdf.sh"
@@ -94,15 +85,15 @@ EOF
             echo -e "autoload -Uz compinit && compinit"
         } >>/etc/zsh/zshrc
     fi
-    # if command -v pwsh & >/dev/null && ( [[ "$(cat /opt/microsoft/powershell/7/profile.ps1)" != *"$ASDF_BASEPATH"* ]] || [ ! -f "/opt/microsoft/powershell/7/profile.ps1" ] ); then
-    #     if [ -f "/opt/microsoft/powershell/7/profile.ps1" ]; then
-    #         echo "Updating /opt/microsoft/powershell/7/profile.ps1"
-    #     else
-    #         touch /opt/microsoft/powershell/7/profile.ps1
-    #     fi
-    #     echo -e ". $ASDF_BASEPATH/asdf.ps1" >>/opt/microsoft/powershell/7/profile.ps1
-    # fi
-    if [ -f "/etc/fish/config.fish" ] && [[ "$(cat /etc/fish/config.fish)" != *"$ASDF_BASEPATH"* ]]; then
+    if command -v pwsh &>/dev/null && ( ! grep -q "$ASDF_BASEPATH" "/opt/microsoft/powershell/7/profile.ps1" || [ ! -f "/opt/microsoft/powershell/7/profile.ps1" ] ); then
+        if [ -f "/opt/microsoft/powershell/7/profile.ps1" ]; then
+            echo "Updating /opt/microsoft/powershell/7/profile.ps1"
+        else
+            touch /opt/microsoft/powershell/7/profile.ps1
+        fi
+        echo -e ". $ASDF_BASEPATH/asdf.ps1" >>/opt/microsoft/powershell/7/profile.ps1
+    fi
+    if [ -f "/etc/fish/config.fish" ] && ! grep -q "$ASDF_BASEPATH" "/etc/fish/config.fish"; then
         echo "Updating /etc/fish/config.fish"
         echo -e "source $ASDF_BASEPATH/asdf.fish" >>/etc/fish/config.fish
         ln -s "$ASDF_BASEPATH/completions/asdf.fish" /etc/fish/completions
