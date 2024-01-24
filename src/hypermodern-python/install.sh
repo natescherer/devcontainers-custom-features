@@ -200,7 +200,8 @@ echo "Adding asdf python plugin..."
 ensure_asdf_plugin_is_installed "python"
 
 # Install Python versions
-set -- "$VERSIONS"
+# shellcheck disable=SC2086
+set -- $VERSIONS
 while [ -n "$1" ]; do
     VERSION="latest:$1"
 
