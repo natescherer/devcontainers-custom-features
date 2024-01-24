@@ -67,6 +67,7 @@ ensure_asdf_is_installed() {
         fi
 
         git clone --depth=1 \
+        -c advice.detachedHead=false \
         -c core.eol=lf \
         -c core.autocrlf=false \
         -c fsck.zeroPaddedFilemode=ignore \
