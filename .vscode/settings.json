@@ -1,0 +1,8 @@
+{
+  "conventionalCommits.promptScopes": true,
+  "conventionalCommits.scopes": [
+    "hypermodern-python",
+    "k9s",
+    "powershell-resources"
+  ]
+}
