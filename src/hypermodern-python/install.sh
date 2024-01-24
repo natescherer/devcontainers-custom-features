@@ -161,7 +161,7 @@ ensure_supporting_tools_are_installed() {
             ENV=\$1
             INJECTION=\$2
 
-            if ! pipx list --include-injected --json | yq '.venvs.strenv(\$ENV).metadata.injected_packages | has("strenv(INJECTION)")' -o json; then
+            if ! pipx list --include-injected --json | yq '.venvs.strenv(ENV).metadata.injected_packages | has("strenv(INJECTION)")' -o json; then
                 echo "Injecting '\$INJECTION' into '\$ENV' via pipx..."
                 pipx inject \$ENV \$INJECTION
             else
