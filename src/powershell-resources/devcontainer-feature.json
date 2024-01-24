@@ -1,7 +1,7 @@
 {
   "name": "PowerShell Resources",
   "id": "powershell-resources",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A feature to install PowerShell resources (modules and scripts) from the PowerShell Gallery for all users on a devcontainer.",
   "options": {
     "resources": {
