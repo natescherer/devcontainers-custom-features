@@ -138,7 +138,7 @@
         "version": "latest"
       },
       "powershell-resources": {
-        "requiredResourceJsonBase64": "ewogICAgIkluc3RhbGwtR2l0aHViUmVsZWFzZSI6IHt9Cn0="
+        "requiredResourceJsonBase64": "ewogICJBc3NlcnQtU2FtZUZpbGUiOiB7fQp9Cg=="
       }
     }
   },
@@ -149,7 +149,7 @@
         "version": "latest"
       },
       "powershell-resources": {
-        "requiredResourceJsonBase64": "ewogICAgIkluc3RhbGwtR2l0aHViUmVsZWFzZSI6IHt9Cn0="
+        "requiredResourceJsonBase64": "ewogICJBc3NlcnQtU2FtZUZpbGUiOiB7fQp9Cg=="
       }
     }
   },
