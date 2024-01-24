@@ -196,12 +196,15 @@ EOF
 }
 
 # Ensure the prereqs for asdf and building python are installed
+echo "Installing prereqs..."
 ensure_prereqs
 
 # Install asdf and its requirements (if needed)
+echo "Ensuring asdf is installed..."
 ensure_asdf_is_installed
 
 # Add python asdf plugin, if needed
+echo "Adding asdf python plugin..."
 ensure_asdf_plugin_is_installed "python"
 
 # Install Python versions
@@ -209,9 +212,12 @@ set -- "$VERSIONS"
 while [ -n "$1" ]; do
     VERSION="latest:$1"
 
+    echo "Installing python version $VERSION..."
+
 	install_python_via_asdf "$VERSION"
 	shift
 done
 
 # Install Hypermodern Python supporting tools
+echo "Installing supporting tools..."
 ensure_supporting_tools_are_installed
