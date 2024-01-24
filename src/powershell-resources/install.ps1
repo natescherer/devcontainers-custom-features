@@ -30,6 +30,12 @@ if ($PSVersionTable.PSVersion -ge 7.4) {
     }
 }
 
+# This is a workaround for https://github.com/PowerShell/PSResourceGet/issues/1540
+if ($IsLinux) {
+    Write-Host -Object "Ensuring Script target directories exist..."
+    New-Item -Path "/usr/local/share/powershell/Scripts/InstalledScriptInfos" -ItemType Directory -Force
+}
+
 Write-Host -Object "Installing Resource(s)..."
 if ($env:RESOURCES) {
     $Resource = $env:RESOURCES.split(",")
