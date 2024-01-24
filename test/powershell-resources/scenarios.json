@@ -131,7 +131,6 @@
       }
     }
   },
-  {
   "powershell-resources_script_via_requiredresourcejsonbase64_debian": {
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
@@ -180,6 +179,4 @@
       }
     }
   }
-}
-
 }
