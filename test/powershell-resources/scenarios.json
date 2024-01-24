@@ -1,182 +1,185 @@
 {
-    "module_via_requiredresourcejsonbase64_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
-            }
-        }
-    },
-    "module_via_requiredresourcejsonbase64_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
-            }
-        }
-    },
-    "module_via_requiredresourcejsonfile_debian": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
-            }
-        }
-    },
-    "module_via_requiredresourcejsonfile_ubuntu": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
-            }
-        }
-    },
-    "script_via_requiredresourcejsonbase64_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonBase64": "ewogICAgIk5ldy1PblByZW1pc2VIeWJyaWRXb3JrZXIiOiB7fQp9"
-            }
-        }
-    },
-    "script_via_requiredresourcejsonbase64_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonBase64": "ewogICAgIk5ldy1PblByZW1pc2VIeWJyaWRXb3JrZXIiOiB7fQp9"
-            }
-        }
-    },
-    "script_via_requiredresourcejsonfile_debian": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
-            }
-        }
-    },
-    "script_via_requiredresourcejsonfile_ubuntu": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
-            }
-        }
-    },
-    "module_specific_version_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
-            }
-        }
-    },
-    "module_specific_version_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
-            }
-        }
-    },
-    "resources_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "resources": "ChangelogManagement,PoshEmail"
-            }
-        }
-    },
-    "resources_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "ghcr.io/devcontainers/features/powershell": {
-                "version": "latest"
-            },
-            "powershell-resources": {
-                "resources": "ChangelogManagement,PoshEmail"
-            }
-        }
-    },
-    "upgrade_psresourceget_debian": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "powershell-resources": {
-                "resources": "ChangelogManagement,PoshEmail"
-            }
-        }
-    },
-    "upgrade_psresourceget_ubuntu": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "powershell-resources": {
-                "resources": "ChangelogManagement,PoshEmail"
-            }
-        }
-    },
-    "existing_psresourceget_debian": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "powershell-resources": {
-                "resources": "ChangelogManagement,PoshEmail"
-            }
-        }
-    },
-    "existing_psresourceget_ubuntu": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "powershell-resources": {
-                "resources": "ChangelogManagement,PoshEmail"
-            }
-        }
+  "powershell-resources_module_via_requiredresourcejsonbase64_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+      }
     }
+  },
+  "powershell-resources_module_via_requiredresourcejsonbase64_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7fQp9"
+      }
+    }
+  },
+  "powershell-resources_module_via_requiredresourcejsonfile_debian": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+      }
+    }
+  },
+  "powershell-resources_module_via_requiredresourcejsonfile_ubuntu": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+      }
+    }
+  },
+  "powershell-resources_module_specific_version_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
+      }
+    }
+  },
+  "powershell-resources_module_specific_version_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonBase64": "ewogICAgIkNoYW5nZWxvZ01hbmFnZW1lbnQiOiB7CiAgICAgICAgInZlcnNpb24iOiAiWzIuMS4zXSIKICAgIH0KfQ=="
+      }
+    }
+  },
+  "powershell-resources_resources_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "resources": "ChangelogManagement,PoshEmail"
+      }
+    }
+  },
+  "powershell-resources_resources_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "resources": "ChangelogManagement,PoshEmail"
+      }
+    }
+  },
+  "powershell-resources_upgrade_psresourceget_debian": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "powershell-resources": {
+        "resources": "ChangelogManagement,PoshEmail"
+      }
+    }
+  },
+  "powershell-resources_upgrade_psresourceget_ubuntu": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "powershell-resources": {
+        "resources": "ChangelogManagement,PoshEmail"
+      }
+    }
+  },
+  "powershell-resources_existing_psresourceget_debian": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "powershell-resources": {
+        "resources": "ChangelogManagement,PoshEmail"
+      }
+    }
+  },
+  "powershell-resources_existing_psresourceget_ubuntu": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "powershell-resources": {
+        "resources": "ChangelogManagement,PoshEmail"
+      }
+    }
+  },
+  {
+  "powershell-resources_script_via_requiredresourcejsonbase64_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonBase64": "ewogICAgIkluc3RhbGwtR2l0aHViUmVsZWFzZSI6IHt9Cn0="
+      }
+    }
+  },
+  "powershell-resources_script_via_requiredresourcejsonbase64_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonBase64": "ewogICAgIkluc3RhbGwtR2l0aHViUmVsZWFzZSI6IHt9Cn0="
+      }
+    }
+  },
+  "powershell-resources_script_via_requiredresourcejsonfile_debian": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+      }
+    }
+  },
+  "powershell-resources_script_via_requiredresourcejsonfile_ubuntu": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/powershell": {
+        "version": "latest"
+      },
+      "powershell-resources": {
+        "requiredResourceJsonFile": "/opt/testsuite/RequiredResources.json"
+      }
+    }
+  }
+}
+
 }
