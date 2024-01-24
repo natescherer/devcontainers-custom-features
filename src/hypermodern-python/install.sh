@@ -48,7 +48,7 @@ ensure_prereqs() {
             ;;
         esac
         echo "Installing yq..."
-        wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_$ARCHITECTURE -O /usr/bin/yq
+        wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_$ARCHITECTURE -O /usr/bin/yq
         chmod +x /usr/bin/yq
     else
         echo "'yq' is already installed"
