@@ -77,7 +77,7 @@ EOF
         echo -e ". $ASDF_BASEPATH/asdf.sh" >>/etc/bash.bashrc
         echo -e ". $ASDF_BASEPATH/completions/asdf.bash" >>/etc/bash.bashrc
     fi
-    if [ -f "/etc/zsh/zshrc" ] && ! grep -L -s "$ASDF_BASEPATH" "/etc/zsh/zshrc"; then
+    if [ -f "/etc/zsh/zshrc" ] && ! grep -q "$ASDF_BASEPATH" "/etc/zsh/zshrc"; then
         echo "Updating /etc/zsh/zshrc"
         {
             echo -e ". $ASDF_BASEPATH/asdf.sh"
