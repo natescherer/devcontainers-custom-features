@@ -22,7 +22,7 @@ check_alpine_packages() {
     apk add -v --no-cache "$@"
 }
 
-check_packages() {
+check_packages_with_apt-get() {
 	if ! dpkg -s "$@" >/dev/null 2>&1; then
 		if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
 			echo "Running apt-get update..."
@@ -33,7 +33,7 @@ check_packages() {
 }
 
 ensure_prereqs() {
-    check_packages libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev curl git ca-certificates
+    check_packages_with_apt-get libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev curl git ca-certificates
 
     if ! type yq >/dev/null 2>&1; then
         ARCHITECTURE="$(uname -m)"
@@ -75,7 +75,7 @@ ensure_asdf_is_installed() {
         "https://github.com/asdf-vm/asdf.git" --branch v0.12.0 $ASDF_BASEPATH 2>&1
 EOF
 
-    if cat /etc/os-release | grep "ID_LIKE=.*alpine.*\|ID=.*alpine.*" ; then
+    if grep "ID_LIKE=.*alpine.*\|ID=.*alpine.*" /etc/os-release; then
         echo "Updating /etc/profile"
         echo -e "export ASDF_DIR=\"$ASDF_BASEPATH\"" >>/etc/profile
         echo -e ". $ASDF_BASEPATH/asdf.sh" >>/etc/profile
@@ -87,9 +87,11 @@ EOF
     fi
     if [ -f "/etc/zsh/zshrc" ] && [[ "$(cat /etc/zsh/zshrc)" != *"$ASDF_BASEPATH"* ]]; then
         echo "Updating /etc/zsh/zshrc"
-        echo -e ". $ASDF_BASEPATH/asdf.sh" >>/etc/zsh/zshrc
-        echo -e "fpath=(\${ASDF_DIR}/completions \$fpath)" >>/etc/zsh/zshrc
-        echo -e "autoload -Uz compinit && compinit" >>/etc/zsh/zshrc
+        {
+            echo -e ". $ASDF_BASEPATH/asdf.sh"
+            echo -e "fpath=(\${ASDF_DIR}/completions \$fpath)"
+            echo -e "autoload -Uz compinit && compinit"
+        } >>/etc/zsh/zshrc
     fi
     # if command -v pwsh & >/dev/null && ( [[ "$(cat /opt/microsoft/powershell/7/profile.ps1)" != *"$ASDF_BASEPATH"* ]] || [ ! -f "/opt/microsoft/powershell/7/profile.ps1" ] ); then
     #     if [ -f "/opt/microsoft/powershell/7/profile.ps1" ]; then
@@ -102,13 +104,12 @@ EOF
     if [ -f "/etc/fish/config.fish" ] && [[ "$(cat /etc/fish/config.fish)" != *"$ASDF_BASEPATH"* ]]; then
         echo "Updating /etc/fish/config.fish"
         echo -e "source $ASDF_BASEPATH/asdf.fish" >>/etc/fish/config.fish
-        ln -s $ASDF_BASEPATH/completions/asdf.fish /etc/fish/completions
+        ln -s "$ASDF_BASEPATH/completions/asdf.fish" /etc/fish/completions
     fi
 }
 
 ensure_asdf_plugin_is_installed() {
     PLUGIN=$1
-    REPO=$2
 
     su - "$_REMOTE_USER" <<EOF
         . $_REMOTE_USER_HOME/.asdf/asdf.sh
@@ -129,8 +130,8 @@ install_python_via_asdf() {
     su - "$_REMOTE_USER" <<EOF
         . $_REMOTE_USER_HOME/.asdf/asdf.sh
 
-        if [ -n "$REQUIREMENTSFILE" ]; then
-            echo "Requirements file '$REQUIREMENTSFILE' exists with contents: $(cat $REQUIREMENTSFILE | tr '\n' ',')"
+        if [ -n "$REQUIREMENTSFILE" ]; then"
+            echo "Requirements file '$REQUIREMENTSFILE' exists with contents: $(< "$REQUIREMENTSFILE" tr '\n' ',')"
             echo "Setting variable ASDF_PYTHON_DEFAULT_PACKAGES_FILE to $REQUIREMENTSFILE"
             export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$REQUIREMENTSFILE"
         fi
@@ -205,9 +206,8 @@ ensure_asdf_is_installed
 ensure_asdf_plugin_is_installed "python"
 
 # Install Python versions
-set -- $VERSIONS
+set -- "$VERSIONS"
 while [ -n "$1" ]; do
-    PLUGINNAME="python"
     VERSION="latest:$1"
 
 	install_python_via_asdf "$VERSION"
