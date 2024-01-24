@@ -130,8 +130,7 @@ install_python_via_asdf() {
     su - "$_REMOTE_USER" <<EOF
         . $_REMOTE_USER_HOME/.asdf/asdf.sh
 
-        if [ -n "$REQUIREMENTSFILE" ]; then"
-            echo "Requirements file '$REQUIREMENTSFILE' exists with contents: $(< "$REQUIREMENTSFILE" tr '\n' ',')"
+        if [ -n "$REQUIREMENTSFILE" ]; then
             echo "Setting variable ASDF_PYTHON_DEFAULT_PACKAGES_FILE to $REQUIREMENTSFILE"
             export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="$REQUIREMENTSFILE"
         fi
