@@ -91,46 +91,6 @@
       }
     }
   },
-  "powershell-resources_upgrade_psresourceget_debian": {
-    "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "features": {
-      "powershell-resources": {
-        "resources": "ChangelogManagement,PoshEmail"
-      }
-    }
-  },
-  "powershell-resources_upgrade_psresourceget_ubuntu": {
-    "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "features": {
-      "powershell-resources": {
-        "resources": "ChangelogManagement,PoshEmail"
-      }
-    }
-  },
-  "powershell-resources_existing_psresourceget_debian": {
-    "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "features": {
-      "powershell-resources": {
-        "resources": "ChangelogManagement,PoshEmail"
-      }
-    }
-  },
-  "powershell-resources_existing_psresourceget_ubuntu": {
-    "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "features": {
-      "powershell-resources": {
-        "resources": "ChangelogManagement,PoshEmail"
-      }
-    }
-  },
   "powershell-resources_script_via_requiredresourcejsonbase64_debian": {
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
