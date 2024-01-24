@@ -26,9 +26,9 @@ check_packages_with_apt-get() {
 	if ! dpkg -s "$@" >/dev/null 2>&1; then
 		if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
 			echo "Running apt-get update..."
-			apt-get update -y
+			apt-get update -yq
 		fi
-		apt-get -y install --no-install-recommends "$@"
+		apt-get install -yq -o Dpkg::Progress-Fancy="0" -o Dpkg::Use-Pty="0" --no-install-recommends "$@"
 	fi
 }
 
