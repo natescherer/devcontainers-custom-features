@@ -1,29 +1,29 @@
 {
-    "hypermodern-python_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "hypermodern-python": {
-                "versions": "3.10 3.11"
-            }
-        }
-    },
-    "hypermodern-python_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "hypermodern-python": {
-                "versions": "3.10 3.11"
-            }
-        }
-    },
-    "hypermodern-python_ubuntu_with_requirements": {
-        "build": {
-            "dockerfile": "Dockerfile"
-        },
-        "features": {
-            "hypermodern-python": {
-                "versions": "3.11",
-                "requirementsFile": "/opt/testsuite/requirements.txt"
-            }
-        }
+  "hypermodern-python_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "hypermodern-python": {
+        "versions": "3.10 3.11"
+      }
     }
+  },
+  "hypermodern-python_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "hypermodern-python": {
+        "versions": "3.10 3.11"
+      }
+    }
+  },
+  "hypermodern-python_ubuntu_with_requirements": {
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "hypermodern-python": {
+        "versions": "3.11",
+        "requirementsFile": "/opt/testsuite/requirements.txt"
+      }
+    }
+  }
 }

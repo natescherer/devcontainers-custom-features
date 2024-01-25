@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Display name and documentation to call out Postmodern python
+- Log formatting improved and noise reduced
 
 ## [1.0.0] - 2023-08-02
 ### Added

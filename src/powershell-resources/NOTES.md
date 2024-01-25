@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 ## Need to Install Specific Resource Versions?
 
 Use `requiredResourceJsonBase64` or `requiredResourceJsonFile`; the RequiredResource spec allows defining specific package versions.

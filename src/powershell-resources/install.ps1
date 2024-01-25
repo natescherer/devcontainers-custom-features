@@ -1,4 +1,4 @@
-$PsrgMinVer = "1.0.1"
+$PSResourceGetMinVer = "1.0.1"
 
 if ($PSVersionTable.PSVersion -ge 7.4) {
     # This test will need updated if a version above 1.0.1 (bundled/invisible in pwsh 7.4) is ever needed
@@ -20,11 +20,11 @@ if ($PSVersionTable.PSVersion -ge 7.4) {
     if (!$PSResourceGetMetadata) {
         Write-Host -Object "'Microsoft.PowerShell.PSResourceGet' is not installed, now installing..."
         Install-Module -Name Microsoft.PowerShell.PSResourceGet -Scope AllUsers
-    } elseif ($PSResourceGetMetadata.Version -lt $PsrgMinVer) {
-        Write-Host "'Microsoft.PowerShell.PSResourceGet' is less than the pinned version of '$PsrgMinVer'. Now updating..."
+    } elseif ($PSResourceGetMetadata.Version -lt $PSResourceGetMinVer) {
+        Write-Host "'Microsoft.PowerShell.PSResourceGet' is less than the pinned version of '$PSResourceGetMinVer'. Now updating..."
         Install-Module -Name Microsoft.PowerShell.PSResourceGet -Scope AllUsers
-    } elseif ($PSResourceGetMetadata.Version -eq $PsrgMinVer) {
-        Write-Host "'Microsoft.PowerShell.PSResourceGet' is already at pinned version of '$PsrgMinVer'."
+    } elseif ($PSResourceGetMetadata.Version -eq $PSResourceGetMinVer) {
+        Write-Host "'Microsoft.PowerShell.PSResourceGet' is already at pinned version of '$PSResourceGetMinVer'."
     } else {
         throw "Something went wrong while ensuring 'Microsoft.PowerShell.PSResourceGet' is installed. Consider opening a GitHub issue at 'https://github.com/natescherer/devcontainers-custom-features/issues' regarding this."
     }
