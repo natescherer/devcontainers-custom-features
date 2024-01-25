@@ -1,0 +1,8 @@
+# All Contributors CLI will apply its own formatting
+.all-contributorsrc
+
+# Keep a Changelog format files use their own Markdown formatting
+**/CHANGELOG.md
+
+# Devcontainer CLI will apply its own formatting
+src/**/README.md
