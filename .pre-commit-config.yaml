@@ -21,3 +21,13 @@ repos:
     rev: v0.12.1
     hooks:
       - id: markdownlint-cli2
+  - repo: https://github.com/melmorabity/pre-commit-psscriptanalyzer
+    rev: v1.0.0
+    hooks:
+      # Check PowerShell code
+      - id: psscriptanalyzer-check
+      # Format PowerShell code
+      - id: psscriptanalyzer-format
+        args:
+          - -Settings
+          - PSScriptAnalyzerSettings.psd1
