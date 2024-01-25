@@ -6,9 +6,7 @@
   "options": {
     "version": {
       "type": "string",
-      "proposals": [
-        "latest"
-      ],
+      "proposals": ["latest"],
       "default": "latest",
       "description": "Select or enter a version of k9s."
     }

@@ -1,34 +1,34 @@
 {
-    "k9s_latest_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "k9s": {
-                "version": "latest"
-            }
-        }
-    },
-    "k9s_latest_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "k9s": {
-                "version": "latest"
-            }
-        }
-    },
-    "k9s_specific_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "k9s": {
-                "version": "0.26.6"
-            }
-        }
-    },
-    "k9s_specific_ubuntu": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-        "features": {
-            "k9s": {
-                "version": "0.26.6"
-            }
-        }
+  "k9s_latest_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "k9s": {
+        "version": "latest"
+      }
     }
+  },
+  "k9s_latest_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "k9s": {
+        "version": "latest"
+      }
+    }
+  },
+  "k9s_specific_debian": {
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+      "k9s": {
+        "version": "0.26.6"
+      }
+    }
+  },
+  "k9s_specific_ubuntu": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "k9s": {
+        "version": "0.26.6"
+      }
+    }
+  }
 }
