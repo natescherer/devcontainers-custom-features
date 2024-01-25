@@ -28,7 +28,7 @@ check_packages_with_apt-get() {
 	fi
 }
 
-ensure_prereqs() {
+ensure_prerequisites() {
     check_packages_with_apt-get libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev curl git ca-certificates
 
     if ! type yq >/dev/null 2>&1; then
@@ -118,7 +118,7 @@ install_python_via_asdf() {
     VERSION=$1
 
 	set -e
-	
+
     su - "$_REMOTE_USER" <<EOF
         . $_REMOTE_USER_HOME/.asdf/asdf.sh
 
@@ -187,9 +187,9 @@ ensure_supporting_tools_are_installed() {
 EOF
 }
 
-# Ensure the prereqs for asdf and building python are installed
-echo "Installing prereqs..."
-ensure_prereqs
+# Ensure the prerequisites for asdf and building python are installed
+echo "Installing prerequisites..."
+ensure_prerequisites
 
 # Install asdf and its requirements (if needed)
 echo "Ensuring asdf is installed..."
