@@ -1,11 +1,7 @@
 # Development Container Custom Features
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/github/all-contributors/natescherer/devcontainers-custom-features?color=ee8449&style=flat-square)](#contributors)
 
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 ## Contents
 
 This repository contains a collection of features for [Development Containers](https://containers.dev). Click on the link for documentation of each feature.
@@ -15,7 +11,6 @@ This repository contains a collection of features for [Development Containers](h
 ### [k9s](src/k9s/README.md)
 
 ### [PowerShell Resources](src/powershell-resources/README.md)
-
 
 ## Contributors
 

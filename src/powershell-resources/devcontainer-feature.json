@@ -20,7 +20,5 @@
       "description": "Path to a JSON file inside the container defining one or more resources (and, optionally, their versions) to install. See https://github.com/PowerShell/PowerShellGet/blob/master/help/Install-PSResource.md#notes for format of this file."
     }
   },
-  "installsAfter": [
-    "ghcr.io/devcontainers/features/powershell"
-  ]
+  "installsAfter": ["ghcr.io/devcontainers/features/powershell"]
 }
