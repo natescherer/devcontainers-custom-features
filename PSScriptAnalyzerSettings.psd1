@@ -1,8 +1,13 @@
 @{
-    Severity     =@('Warning', 'Error', 'Information')
-    ExcludeRules =@('PSAvoidUsingWriteHost')
-    Rules        = @{
-        PSPlaceOpenBrace  = @{
+    Severity = @(
+        "Warning",
+        "Error"
+    )
+    ExcludeRules = @(
+        "PSAvoidUsingWriteHost"
+    )
+    Rules = @{
+        PSPlaceOpenBrace = @{
             Enable             = $true
             OnSameLine         = $true
             NewLineAfter       = $true
