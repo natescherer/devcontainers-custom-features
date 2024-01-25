@@ -4,5 +4,6 @@
     "hypermodern-python",
     "k9s",
     "powershell-resources"
-  ]
+  ],
+  "cSpell.words": ["venvs"]
 }
