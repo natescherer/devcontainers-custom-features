@@ -1,0 +1,34 @@
+{
+  "name": "devcontainer-feature-dev-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+    "ghcr.io/devcontainers/features/powershell:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "DavidAnson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "EditorConfig.EditorConfig",
+        "exiasr.hadolint",
+        "github.vscode-github-actions",
+        "joshbolduc.commitlint",
+        "mkhl.shfmt",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.powershell",
+        "redhat.vscode-yaml",
+        "shyykoserhiy.git-autoconfig",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "vivaxy.vscode-conventional-commits"
+      ]
+    }
+  }
+}
