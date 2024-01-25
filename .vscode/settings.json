@@ -5,5 +5,5 @@
     "k9s",
     "powershell-resources"
   ],
-  "cSpell.words": ["venvs"]
+  "cSpell.words": ["aarch", "armv", "fpath", "strenv", "venvs"]
 }
