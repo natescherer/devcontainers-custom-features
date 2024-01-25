@@ -4,6 +4,7 @@
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+    "ghcr.io/dhoeric/features/hadolint:1": {},
     "ghcr.io/devcontainers/features/powershell:1": {
       "version": "latest"
     },
