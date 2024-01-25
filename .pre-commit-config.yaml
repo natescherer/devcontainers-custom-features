@@ -24,10 +24,12 @@ repos:
   - repo: https://github.com/melmorabity/pre-commit-psscriptanalyzer
     rev: v1.0.0
     hooks:
-      # Check PowerShell code
       - id: psscriptanalyzer-check
-      # Format PowerShell code
       - id: psscriptanalyzer-format
         args:
           - -Settings
           - PSScriptAnalyzerSettings.psd1
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+      - id: shellcheck

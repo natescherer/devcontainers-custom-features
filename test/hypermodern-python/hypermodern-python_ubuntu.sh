@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+# shellcheck disable=SC1091
 source dev-container-features-test-lib
 
 check "python 3.10" asdf list python 3.10
