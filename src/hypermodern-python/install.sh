@@ -177,14 +177,15 @@ ensure_supporting_tools_are_installed() {
         echo "pipx is already installed"
     fi
 
-    ensure_pipx_app_is_installed cookiecutter
-    ensure_pipx_app_is_installed poetry
-    ensure_pipx_app_is_installed nox
-    ensure_pipx_injection nox nox-poetry
-    # pipx install cookiecutter
-    # pipx install poetry
-    # pipx install nox
-    # pipx inject nox nox-poetry
+        ensure_pipx_app_is_installed cookiecutter
+        ensure_pipx_app_is_installed cruft
+        ensure_pipx_app_is_installed poetry
+        ensure_pipx_app_is_installed nox
+        ensure_pipx_injection nox nox-poetry
+        # pipx install cookiecutter
+        # pipx install poetry
+        # pipx install nox
+        # pipx inject nox nox-poetry
 EOF
 }
 

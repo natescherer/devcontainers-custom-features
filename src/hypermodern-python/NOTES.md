@@ -2,9 +2,10 @@
 
 ## About this Feature
 
-This feature is designed to set up multiple versions of Python via [asdf](https://asdf-vm.com), and install the following supporting tools needed to use the [Hypermodern Python Cookiecutter](https://cookiecutter-hypermodern-python.readthedocs.io):
+This feature is designed to set up multiple versions of Python via [asdf](https://asdf-vm.com), and install the following supporting tools needed to use the [Hypermodern Python Cookiecutter](https://cookiecutter-hypermodern-python.readthedocs.io) and/or the [Postmodern Python Cookiecutter](https://github.com/natescherer/cookiecutter-postmodern-python):
 
 - [Cookiecutter](https://github.com/audreyr/cookiecutter)
+- [Cruft](https://github.com/cruft/cruft)
 - [Poetry](https://python-poetry.org/)
 - [Nox](https://nox.thea.codes/)
 - [nox-poetry](https://nox-poetry.readthedocs.io/)
