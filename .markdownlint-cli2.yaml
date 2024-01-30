@@ -4,5 +4,7 @@ config:
 fix: true
 
 ignores:
+  # Keep a Changelog format files use their own Markdown formatting
   - "**/CHANGELOG.md"
+  # Devcontainer CLI will apply its own formatting
   - "src/*/README.md"

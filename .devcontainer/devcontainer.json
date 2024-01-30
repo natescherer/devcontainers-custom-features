@@ -6,31 +6,30 @@
     "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
     "ghcr.io/dhoeric/features/hadolint:1": {},
     "ghcr.io/devcontainers/features/powershell:1": {
-      "version": "latest"
+      "version": "latest",
     },
     "ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {
-      "version": "latest"
-    }
+      "version": "latest",
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers-contrib/features/devcontainers-cli:1": {},
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "EditorConfig.EditorConfig",
-        "exiasr.hadolint",
+        "fnando.linter",
         "github.vscode-github-actions",
         "joshbolduc.commitlint",
         "Jota0222.multi-formatter",
         "mkhl.shfmt",
         "ms-azuretools.vscode-docker",
         "ms-vscode.powershell",
-        "redhat.vscode-yaml",
         "shyykoserhiy.git-autoconfig",
         "streetsidesoftware.code-spell-checker",
-        "timonwong.shellcheck",
-        "vivaxy.vscode-conventional-commits"
-      ]
-    }
-  }
+        "vivaxy.vscode-conventional-commits",
+      ],
+    },
+  },
 }
