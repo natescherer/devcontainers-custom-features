@@ -5,3 +5,5 @@ SHELL ["/bin/bash", "-c"]
 
 # Copy support files into image
 COPY * /opt/testsuite/
+
+USER vscode
