@@ -1,9 +1,4 @@
 {
-  "conventionalCommits.promptScopes": true,
-  "conventionalCommits.scopes": [
-    "hypermodern-python",
-    "k9s",
-    "powershell-resources"
-  ],
-  "cSpell.words": ["aarch", "armv", "fpath", "strenv", "venvs"]
+  "cSpell.words": ["aarch", "armv", "fpath", "strenv", "venvs"],
+  "remote.autoForwardPortsFallback": 0
 }

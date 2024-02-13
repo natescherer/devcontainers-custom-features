@@ -1,8 +1,0 @@
-config:
-  line-length: false
-
-fix: true
-
-ignores:
-  - "**/CHANGELOG.md"
-  - "src/*/README.md"

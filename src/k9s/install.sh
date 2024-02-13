@@ -30,7 +30,7 @@ find_github_release_asset_url() {
   echo "$downloadUrl"
 }
 
-download_and_install_gzipped_tarball() {
+download_and_install_tar_gz() {
   local url destFolder binaryName installTempPath tarballName
   url=$1
   destFolder=$2
@@ -50,4 +50,4 @@ download_and_install_gzipped_tarball() {
 
 ghUrl=$(find_github_release_asset_url "$repo" "$filenameTemplate" "$VERSION")
 
-download_and_install_gzipped_tarball "$ghUrl" "/opt/${binaryName}" $binaryName
+download_and_install_tar_gz "$ghUrl" "/opt/${binaryName}" $binaryName

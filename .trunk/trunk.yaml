@@ -1,0 +1,50 @@
+version: 0.1
+cli:
+  version: 1.19.0
+  shell_hooks:
+    enforce: true
+plugins:
+  sources:
+    - id: trunk
+      ref: v1.4.2
+      uri: https://github.com/trunk-io/plugins
+    - id: natescherer-trunk
+      ref: v1.0.0
+      uri: https://github.com/natescherer/trunk-io-plugins
+runtimes:
+  enabled:
+    - go@1.21.0
+    - node@18.12.1
+    - python@3.10.8
+lint:
+  enabled:
+    - actionlint@1.6.26
+    - "hadolint@2.12.1-beta!"
+    - markdownlint@0.39.0
+    - prettier@3.2.4
+    - shellcheck@0.9.0
+    - shfmt@3.6.0
+    - trivy@0.48.3:
+        commands: [config, fs-vuln, fs-secret]
+    - yamllint@1.33.0
+  ignore:
+    - linters: [markdownlint]
+      paths:
+        # Keep a Changelog format files use their own Markdown formatting
+        - "**/CHANGELOG.md"
+        # Devcontainer CLI will apply its own formatting
+        - "src/*/README.md"
+    - linters: [yamllint]
+      paths:
+        # Actions formatting conflicts with yamllint rules
+        - ".github/workflows"
+
+actions:
+  enabled:
+    - commitizen-cz-cli
+    - commitlint
+    - trunk-check-pre-push
+    - trunk-fmt-pre-commit
+tools:
+  enabled:
+    - commitizen-cz-cli@4.3.0

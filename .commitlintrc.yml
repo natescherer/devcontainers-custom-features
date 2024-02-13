@@ -2,11 +2,7 @@
 # and match the v1.0.0 specification:
 # https://www.conventionalcommits.org/en/v1.0.0/#specification
 #
-# You can remove them and uncomment the config below when the following issue is
-# fixed: https://github.com/conventional-changelog/commitlint/issues/613
-#
-# extends:
-#   - '@commitlint/config-conventional'
+# This is to work around having to have node dependencies installed for a non-node project.
 rules:
   body-leading-blank: [1, always]
   body-max-line-length: [2, always, 100]
@@ -25,3 +21,8 @@ rules:
     - 2
     - always
     - [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test]
+  # Custom/modified rules after this point
+  scope-enum:
+    - 2
+    - always
+    - [hypermodern-python, k9s, powershell-resources]

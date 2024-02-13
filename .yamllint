@@ -1,0 +1,11 @@
+extends: default
+
+rules:
+  anchors:
+    forbid-unused-anchors: true
+  document-start: disable
+  empty-values: enable
+  indentation:
+    spaces: 2
+    check-multi-line-strings: true
+  line-length: disable
