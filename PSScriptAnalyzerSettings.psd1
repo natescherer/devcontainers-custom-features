@@ -1,23 +1,29 @@
-@{
-    Severity = @(
-        "Warning",
-        "Error"
-    )
+﻿@{
     ExcludeRules = @(
-        "PSAvoidUsingWriteHost"
+        "PSAvoidUsingWriteHost",
+        "PSUseBOMForUnicodeEncodedFile"
     )
     Rules = @{
+        PSAvoidSemicolonsAsLineTerminators = @{
+            Enable = $true
+        }
         PSPlaceOpenBrace = @{
-            Enable             = $true
-            OnSameLine         = $true
-            NewLineAfter       = $true
+            Enable = $true
+            OnSameLine = $true
+            NewLineAfter = $true
             IgnoreOneLineBlock = $true
         }
         PSPlaceCloseBrace = @{
-            Enable             = $true
-            NoEmptyLineBefore  = $true
+            Enable = $true
+            NoEmptyLineBefore = $true
             IgnoreOneLineBlock = $true
-            NewLineAfter       = $false
+            NewLineAfter = $false
+        }
+        PSUseConsistentIndentation = @{
+            Enable = $true
+        }
+        PSUseCorrectCasing = @{
+            Enable = $true
         }
     }
 }
