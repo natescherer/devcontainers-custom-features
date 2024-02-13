@@ -1,5 +1,5 @@
 {
-  "name": "devcontainer-feature-dev-devcontainer",
+  "name": "devcontainer-features",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "remoteUser": "vscode",
   "features": {
@@ -14,13 +14,12 @@
         "ms-vscode.powershell",
         "streetsidesoftware.code-spell-checker",
         "trunk.io",
-        "KnisterPeter.vscode-commitizen"
+        "KnisterPeter.vscode-commitizen",
       ],
     },
   },
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE},target=/host-home-folder,type=bind,consistency=cached",
-    // "source=trunk-cache,target=/home/vscode/.cache/trunk,type=volume",
   ],
-  // "onCreateCommand": "sudo chown vscode /home/vscode/.cache/trunk",
+  "updateContentCommand": "trunk install && trunk git-hooks sync",
 }

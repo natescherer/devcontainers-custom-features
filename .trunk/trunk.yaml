@@ -18,7 +18,7 @@ runtimes:
 lint:
   enabled:
     - actionlint@1.6.26
-    - hadolint@2.12.1-beta!
+    - "hadolint@2.12.1-beta!"
     - markdownlint@0.39.0
     - prettier@3.2.4
     - shellcheck@0.9.0
