@@ -9,7 +9,8 @@ plugins:
       ref: v1.4.2
       uri: https://github.com/trunk-io/plugins
     - id: natescherer-trunk
-      local: /host-home-folder/GitHub/trunk-io-plugins
+      ref: v1.0.0
+      uri: https://github.com/natescherer/trunk-io-plugins
 runtimes:
   enabled:
     - go@1.21.0
