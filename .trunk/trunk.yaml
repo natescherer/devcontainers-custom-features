@@ -9,7 +9,7 @@ plugins:
       ref: v1.4.2
       uri: https://github.com/trunk-io/plugins
     - id: natescherer-trunk
-      ref: v1.0.0
+      ref: v1.1.0
       uri: https://github.com/natescherer/trunk-io-plugins
 runtimes:
   enabled:
@@ -22,6 +22,7 @@ lint:
     - "hadolint@2.12.1-beta!"
     - markdownlint@0.39.0
     - prettier@3.2.4
+    - psscriptanalyzer@1.21.0
     - shellcheck@0.9.0
     - shfmt@3.6.0
     - trivy@0.48.3:
@@ -41,10 +42,10 @@ lint:
 
 actions:
   enabled:
-    - commitizen-cz-cli
+    - commitizen
     - commitlint
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
 tools:
   enabled:
-    - commitizen-cz-cli@4.3.0
+    - commitizen@4.3.0
